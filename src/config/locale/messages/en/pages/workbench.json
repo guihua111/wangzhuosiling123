@@ -1,0 +1,297 @@
+{
+  "metadata": {
+    "title": "Retail Lending Business Workbench",
+    "description": "An interactive workspace for customer screening, document intake, interview structuring, profiling, product matching, outreach, materials, and follow-ups."
+  },
+  "page": {
+    "show_sections": ["workspace"],
+    "sections": {
+      "workspace": {
+        "id": "workspace",
+        "block": "retail-workbench",
+        "back_title": "Back to home",
+        "eyebrow": "Retail Lending Business Assistant",
+        "title": "Business Workbench",
+        "description": "Choose a module and start working. This version provides an interactive front-end demonstration; AI and credit outputs still require manager review.",
+        "demo_notice": "Local demo environment",
+        "module_label": "Eight core capabilities",
+        "modules": [
+          {
+            "id": "ledger",
+            "title": "Customer ledger and screening",
+            "description": "Prioritize customers by operating activity, loan status, maturity, and follow-up interval.",
+            "icon": "UsersRound"
+          },
+          {
+            "id": "ocr",
+            "title": "OCR document intake",
+            "description": "Extract document and statement fields and review low-confidence results.",
+            "icon": "ScanLine"
+          },
+          {
+            "id": "interview",
+            "title": "Interview structuring",
+            "description": "Turn unstructured notes into needs, concerns, and open questions.",
+            "icon": "FileSearch2"
+          },
+          {
+            "id": "profile",
+            "title": "Customer profile",
+            "description": "Maintain customer, business, bank relationship, external credit, and current-needs data.",
+            "icon": "ContactRound"
+          },
+          {
+            "id": "matching",
+            "title": "Product matching",
+            "description": "Show product directions, match rationale, and conditions based on reviewed information.",
+            "icon": "GitCompareArrows"
+          },
+          {
+            "id": "scripts",
+            "title": "Intelligent outreach scripts",
+            "description": "Create editable scripts for calls, messages, meetings, and objections.",
+            "icon": "MessageSquareText"
+          },
+          {
+            "id": "materials",
+            "title": "Document checklist",
+            "description": "Track collected, system-held, pending, and missing documents with completeness.",
+            "icon": "FolderCheck"
+          },
+          {
+            "id": "followup",
+            "title": "Follow-up reminders",
+            "description": "Record contact outcomes, feedback, and next tasks in a continuous timeline.",
+            "icon": "CalendarClock"
+          }
+        ],
+        "copy": {
+          "shared": {
+            "save": "Save current result",
+            "saved": "The current operation was saved in the local demo workspace."
+          },
+          "ledger": {
+            "search_placeholder": "Search customer or industry",
+            "filters": [
+              { "id": "all", "title": "All customers" },
+              { "id": "priority", "title": "Today's priority" },
+              { "id": "maturity", "title": "Near maturity" },
+              { "id": "unfollowed", "title": "No recent follow-up" }
+            ],
+            "columns": [
+              "Customer",
+              "Industry",
+              "Monthly cash flow",
+              "Current loan",
+              "Last follow-up",
+              "Priority"
+            ],
+            "rows": [
+              {
+                "name": "Lin Fresh Market",
+                "industry": "Neighborhood retail",
+                "cashflow": "RMB 540k",
+                "loan": "None",
+                "followup": "38 days ago",
+                "priority": "High · Working capital",
+                "segment": "priority"
+              },
+              {
+                "name": "Voyage Auto Parts",
+                "industry": "Automotive services",
+                "cashflow": "RMB 860k",
+                "loan": "RMB 450k",
+                "followup": "12 days ago",
+                "priority": "High · Near maturity",
+                "segment": "maturity"
+              },
+              {
+                "name": "Clearwater Dining",
+                "industry": "Food service",
+                "cashflow": "RMB 310k",
+                "loan": "None",
+                "followup": "65 days ago",
+                "priority": "Medium · Re-engage",
+                "segment": "unfollowed"
+              },
+              {
+                "name": "Jiamu Home",
+                "industry": "Home retail",
+                "cashflow": "RMB 720k",
+                "loan": "RMB 200k",
+                "followup": "5 days ago",
+                "priority": "Routine service",
+                "segment": "all"
+              }
+            ],
+            "result_label": "{count} customers match the current filters. Review consent and risk flags before outreach."
+          },
+          "ocr": {
+            "upload_title": "Add customer documents",
+            "upload_description": "Identity documents, business licenses, and bank statements are supported. This demo does not upload real files.",
+            "select_button": "Load demo document",
+            "demo_file": "Demo: Lin Fresh Market business license.pdf",
+            "result_title": "OCR-extracted fields",
+            "pending": "Pending manager review",
+            "reviewed": "Manager reviewed",
+            "confirm_button": "Confirm extracted fields",
+            "fields": [
+              { "label": "Business name", "value": "Lin Fresh Market" },
+              { "label": "Registration number", "value": "91320100MA2XXXXXXX" },
+              { "label": "Owner", "value": "Xiaofeng Lin" },
+              { "label": "Established", "value": "2019-06-18" },
+              {
+                "label": "Business scope",
+                "value": "Fresh food and household goods"
+              },
+              { "label": "Confidence", "value": "96.4%" }
+            ]
+          },
+          "interview": {
+            "input_title": "Interview notes or call summary",
+            "sample": "The customer runs a neighborhood grocery store with daily revenue of about RMB 18,000. They seek RMB 500,000 for peak-season inventory over 12 months. The customer owns a home, has not confirmed collateral preference, and cares about speed and flexible repayment.",
+            "action": "Structure interview notes",
+            "output_title": "Structured interview result",
+            "empty": "After editing the notes, select Structure interview notes.",
+            "outputs": [
+              {
+                "label": "Purpose",
+                "value": "Peak-season fresh food and household inventory"
+              },
+              {
+                "label": "Amount and term",
+                "value": "RMB 500,000 over 12 months"
+              },
+              {
+                "label": "Customer priorities",
+                "value": "Disbursement speed and repayment flexibility"
+              },
+              {
+                "label": "Open questions",
+                "value": "Current liabilities, collateral preference, and complete six-month statements"
+              }
+            ]
+          },
+          "profile": {
+            "form_title": "Customer and business information",
+            "fields": [
+              { "label": "Customer", "value": "Lin Fresh Market" },
+              { "label": "Years operating", "value": "7 years" },
+              { "label": "Industry", "value": "Neighborhood grocery retail" },
+              { "label": "Monthly cash flow", "value": "About RMB 540,000" },
+              {
+                "label": "Bank relationship",
+                "value": "Settlement customer, no loan"
+              },
+              {
+                "label": "Current need",
+                "value": "RMB 500,000 working capital"
+              }
+            ],
+            "summary_title": "Profile completeness",
+            "completeness": "86%",
+            "tags": [
+              "Stable operating cash flow",
+              "No current business loan with the bank",
+              "More than five years in operation",
+              "Collateral preference pending"
+            ]
+          },
+          "matching": {
+            "customer_title": "Current customer need",
+            "customer_summary": "RMB 500,000 working capital · 12 months · Speed is important · Security pending",
+            "action": "Recalculate match",
+            "products": [
+              {
+                "label": "Primary direction",
+                "title": "Small-business unsecured facility",
+                "score": "92",
+                "reason": "Stable cash flow, a good settlement relationship, and no current business loan support priority assessment of an unsecured direction.",
+                "condition": "Complete six-month statements, credit authorization, and current liability details are still required."
+              },
+              {
+                "label": "Alternative direction",
+                "title": "Property-secured business facility",
+                "score": "78",
+                "reason": "The customer owns a home, creating an alternative if the unsecured amount does not meet the need.",
+                "condition": "Property ownership, collateral preference, and valuation must be confirmed."
+              }
+            ],
+            "disclaimer": "Matching is for business assistance only. Amount, rate, term, and approval remain subject to the formal credit process."
+          },
+          "scripts": {
+            "scenario_title": "Choose a communication scenario",
+            "output_title": "Editable script suggestion",
+            "editable": "Review before use",
+            "confirm_button": "Confirm and save script",
+            "scenarios": [
+              {
+                "title": "First phone call",
+                "content": "Hello Mr. Lin, I am your relationship manager. We noticed that your recent operating cash flow has been stable and wanted to understand whether you have peak-season inventory funding needs. I can first help structure possible directions based on your business. Final amount and terms remain subject to formal approval."
+              },
+              {
+                "title": "Message follow-up",
+                "content": "Hello Mr. Lin. I have summarized the RMB 500,000 inventory need discussed today. The next step is to add six months of operating statements and current liability details. I will explain the assessable product directions after reviewing the documents."
+              },
+              {
+                "title": "Objection handling",
+                "content": "I understand that processing time is important. We can first organize the core documents and need in one pass to reduce repeated requests. Actual timing will still depend on document completeness and the formal approval process."
+              }
+            ]
+          },
+          "materials": {
+            "list_title": "Dynamic document checklist",
+            "progress_title": "Document completeness",
+            "progress_text": "{complete} of {total} items complete. Select an item to update completeness.",
+            "items": [
+              {
+                "title": "Customer identity",
+                "description": "Collected · OCR confirmed",
+                "complete": true
+              },
+              {
+                "title": "Business license",
+                "description": "Collected · OCR confirmed",
+                "complete": true
+              },
+              {
+                "title": "Six months of bank statements",
+                "description": "Collected · Completeness pending",
+                "complete": true
+              },
+              {
+                "title": "Premises evidence",
+                "description": "Missing",
+                "complete": false
+              },
+              {
+                "title": "Loan-purpose documents",
+                "description": "Missing",
+                "complete": false
+              },
+              {
+                "title": "Current liability statement",
+                "description": "Customer to provide",
+                "complete": false
+              }
+            ]
+          },
+          "followup": {
+            "add_title": "Create the next task",
+            "task_label": "Follow-up task",
+            "task_placeholder": "For example: confirm collateral preference",
+            "date_label": "Reminder date",
+            "add_button": "Add follow-up task",
+            "timeline_title": "Customer follow-up timeline",
+            "task_meta": "Relationship manager · Pending",
+            "tasks": [
+              "Confirm peak-season inventory funding need by phone",
+              "Collect six months of operating statements",
+              "Explain the primary product direction and open conditions"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

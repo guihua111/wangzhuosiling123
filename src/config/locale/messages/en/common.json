@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "ShipAny Template Two",
-    "description": "ShipAny is a NextJS boilerplate for building AI SaaS startups. Ship Fast with a variety of templates and components.",
-    "keywords": "shipany, shipany-boilerplate, shipany-template-two-demo"
+    "title": "Retail Lending Business Assistant",
+    "description": "An AI-assisted workspace for retail relationship managers to screen customers, structure needs, match lending products, prepare outreach, collect documents, and manage follow-ups.",
+    "keywords": "retail lending assistant,relationship manager,customer profile,product matching,interview notes,OCR,follow-up management"
   },
   "sign": {
     "sign_in_title": "Sign In",

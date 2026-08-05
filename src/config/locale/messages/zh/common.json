@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "ShipAny 模板二",
-    "description": "ShipAny 是用于构建 AI SaaS 创业项目的 NextJS 脚手架。提供丰富模板和组件，助您快速上线产品。",
-    "keywords": "shipany, shipany-boilerplate, shipany-template-two-demo"
+    "title": "零售信贷展业助手",
+    "description": "面向零售客户经理的客户筛选、需求整理、产品适配、营销话术、材料准备与跟进工作台。",
+    "keywords": "零售信贷展业助手,零售客户经理,客户画像,产品匹配,访谈纪要,OCR录入,营销话术,跟进提醒"
   },
   "sign": {
     "sign_in_title": "登录",

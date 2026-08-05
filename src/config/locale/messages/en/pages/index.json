@@ -2,422 +2,302 @@
   "page": {
     "show_sections": [
       "hero",
-      "logos",
       "introduce",
       "benefits",
       "usage",
       "features",
       "stats",
-      "testimonials",
       "faq",
       "cta"
     ],
     "sections": {
       "hero": {
         "id": "hero",
-        "title": "Ship AI Startups in hours, not days",
-        "highlight_text": "in hours",
-        "description": "ShipAny is a NextJS boilerplate for building AI SaaS startups.<br/>Ship Fast with a variety of templates and components.",
+        "block": "hero",
         "announcement": {
-          "badge": "New",
-          "title": "🎉 ShipAny Template Two",
-          "url": "/pricing"
+          "title": "Retail Lending Business Assistant · AI Workspace",
+          "url": "/#assistant-panel"
         },
-        "tip": "🎁 Special offer for the first 1000 users",
+        "title": "Retail lending assistance that turns every conversation into a clear next step",
+        "highlight_text": "clear next step",
+        "description": "A workspace for retail relationship managers to manage customers, structure needs, match lending products, and coordinate follow-ups.<br/>Turn scattered conversations into reviewable, actionable business outcomes.",
         "buttons": [
           {
-            "title": "Get Started",
-            "icon": "Zap",
-            "url": "/pricing",
-            "target": "_self",
-            "variant": "default"
+            "title": "Try the example",
+            "icon": "Sparkles",
+            "url": "/#assistant-panel"
           },
           {
-            "title": "Read Document",
-            "icon": "BookOpenText",
-            "url": "/docs",
-            "target": "_blank",
+            "title": "See the workflow",
+            "icon": "Workflow",
+            "url": "/#workflow",
             "variant": "outline"
           }
         ],
-        "show_avatars": true,
-        "avatars_tip": "999+ users are using ShipAny",
-        "show_award": false,
-        "image": {
-          "src": "/imgs/features/admin.png",
-          "alt": "hero",
-          "width": 1200,
-          "height": 800
-        },
-        "image_invert": {
-          "src": "/imgs/features/admin-dark.png",
-          "alt": "hero",
-          "width": 1200,
-          "height": 800
-        },
-        "background_image": {
-          "src": "/imgs/bg/tree.jpg",
-          "alt": "hero"
+        "tip": "AI output must be reviewed by a relationship manager and does not replace credit approval.",
+        "show_avatars": false,
+        "assistant_panel": {
+          "eyebrow": "AI workspace · Example",
+          "title": "Add customer context and generate a structured action plan",
+          "description": "Choose a scenario, edit the example, and preview a needs summary, product direction, and next action.",
+          "input_label": "Customer context or interview notes",
+          "output_label": "Business action preview",
+          "generate_label": "Generate action plan",
+          "generating_label": "Structuring the information…",
+          "edit_hint": "Edit the example and generate it again",
+          "compliance": "Example output · Review before use",
+          "result_labels": {
+            "need": "Needs summary",
+            "match": "Product direction",
+            "action": "Next action"
+          },
+          "modes": [
+            {
+              "title": "Interview notes",
+              "prompt": "The customer runs a neighborhood grocery store with average daily revenue of about RMB 18,000. They seek RMB 500,000 for peak-season inventory over 12 months. The customer owns a home, has not confirmed whether collateral is acceptable, and wants to understand feasible options soon.",
+              "result": {
+                "need": "RMB 500,000 in working capital for peak-season inventory over 12 months; collateral preference still needs confirmation.",
+                "match": "Prioritize assessment of a small-business working-capital facility. Amount, rate, term, and security remain subject to formal approval.",
+                "action": "Confirm six months of operating cash flow, current liabilities, and collateral preference; collect the business license and key operating records."
+              }
+            },
+            {
+              "title": "Customer screening",
+              "prompt": "Filter for customers with stable operating cash flow over the last 90 days, no current business loan with our bank, and no follow-up in the last 30 days. Exclude customers who opted out of marketing or carry a high-risk flag.",
+              "result": {
+                "need": "Create a prioritized outreach list focused on customers with stable operations who have not been contacted recently.",
+                "match": "Tag possible directions such as working capital or business expansion without drawing a credit conclusion at the screening stage.",
+                "action": "Review marketing consent and risk flags, confirm priority, then prepare first-contact talking points and follow-up tasks."
+              }
+            },
+            {
+              "title": "Document review",
+              "prompt": "Available: identity document, business license, and six months of bank statements. To confirm: premises evidence, loan-purpose documents, and spouse information.",
+              "result": {
+                "need": "Core identity and business documents are available; operating and income details can move to manual verification.",
+                "match": "Document completeness supports preliminary product matching, while missing items may affect specific eligibility conditions.",
+                "action": "Check OCR fields against originals, collect premises, purpose, and related-party documents where required, and record each source."
+              }
+            }
+          ]
         }
       },
-      "logos": {
-        "id": "logos",
-        "title": "ShipAny is built on the shoulders of giants",
+      "introduce": {
+        "id": "capabilities",
+        "block": "features",
+        "title": "One workspace for the relationship manager's daily business loop",
+        "description": "Connect opportunity discovery with follow-up while reducing duplicate entry and constant system switching.",
         "items": [
           {
-            "title": "Next.js",
-            "image": {
-              "src": "/imgs/logos/nextjs.svg",
-              "alt": "Next.js"
-            }
+            "title": "Customer ledger and screening",
+            "description": "Prioritize customers by cash flow, loan status, maturity, and last follow-up while retaining marketing and risk restrictions.",
+            "icon": "UsersRound",
+            "url": "/workbench?module=ledger"
           },
           {
-            "title": "React",
-            "image": {
-              "src": "/imgs/logos/react.svg",
-              "alt": "React"
-            }
+            "title": "OCR-assisted intake",
+            "description": "Extract fields from identity documents, business licenses, and bank statements, with confidence and review states.",
+            "icon": "ScanText",
+            "url": "/workbench?module=ocr"
           },
           {
-            "title": "TailwindCSS",
-            "image": {
-              "src": "/imgs/logos/tailwindcss.svg",
-              "alt": "TailwindCSS"
-            }
+            "title": "Structured interviews",
+            "description": "Turn meeting notes, call summaries, or transcripts into purpose, amount, term, collateral preferences, and open questions.",
+            "icon": "ListChecks",
+            "url": "/workbench?module=interview"
           },
           {
-            "title": "Shadcn/UI",
-            "image": {
-              "src": "/imgs/logos/shadcn.svg",
-              "alt": "Shadcn/UI"
-            }
-          },
-          {
-            "title": "Vercel",
-            "image": {
-              "src": "/imgs/logos/vercel.svg",
-              "alt": "Vercel"
-            }
+            "title": "Customer profile",
+            "description": "Bring together core details, bank relationships, external credit, current needs, and source tracking.",
+            "icon": "ContactRound",
+            "url": "/workbench?module=profile"
           }
         ]
       },
-      "introduce": {
-        "block": "features-list",
-        "id": "introduce",
-        "title": "What is ShipAny",
-        "label": "Introduce",
-        "description": "ShipAny is a NextJS boilerplate for building AI SaaS startups, including templates, components, and documentation.",
-        "image": {
-          "src": "/imgs/features/landing-page.png",
-          "alt": "introduce"
-        },
-        "items": [
-          {
-            "title": "Ready-to-use Templates",
-            "description": "Choose from dozens of production-ready AI SaaS templates to quickly start your project.",
-            "icon": "RiNextjsFill",
-            "image": {
-              "src": "/imgs/features/1.png",
-              "alt": "introduce"
-            }
-          },
-          {
-            "title": "Infrastructure Setup",
-            "description": "Get instant access to scalable infrastructure with best practices built-in.",
-            "icon": "RiDatabase2Line",
-            "image": {
-              "src": "/imgs/features/2.png",
-              "alt": "introduce"
-            }
-          },
-          {
-            "title": "Quick Deployment",
-            "description": "Deploy your AI SaaS application to production in hours, not days.",
-            "icon": "RiCloudyFill",
-            "image": {
-              "src": "/imgs/features/3.png",
-              "alt": "introduce"
-            }
-          },
-          {
-            "title": "AI Integration",
-            "description": "Integrate AI into your project with ease using our built-in AI SDK.",
-            "icon": "RiRobot2Line",
-            "image": {
-              "src": "/imgs/features/4.png",
-              "alt": "introduce"
-            }
-          }
-        ],
-        "className": "bg-muted"
-      },
       "benefits": {
-        "block": "features-accordion",
-        "id": "benefits",
-        "title": "Why Choose ShipAny",
-        "label": "Benefits",
-        "description": "Get everything you need to launch your AI startup - from ready-to-use templates to technical support.",
+        "id": "outcomes",
+        "block": "features",
+        "title": "Turn information into practical business outcomes",
+        "description": "Create outputs with clear evidence, boundaries, and next steps around the customer's current need.",
         "items": [
           {
-            "title": "Complete Framework",
-            "description": "Built on Next.js with authentication, payments, and AI integration - everything works out of the box.",
-            "icon": "RiNextjsFill",
-            "image": {
-              "src": "/imgs/features/user-billing.png",
-              "alt": "benefits"
-            }
+            "title": "Explainable product matching",
+            "description": "Show a primary direction, reasons, satisfied conditions, and missing conditions so managers can focus quickly.",
+            "icon": "BadgeCheck",
+            "url": "/workbench?module=matching"
           },
           {
-            "title": "Rich Templates Library",
-            "description": "Choose from various AI SaaS templates to kickstart your project - chatbots, image generation, and more.",
-            "icon": "RiClapperboardAiLine",
-            "image": {
-              "src": "/imgs/features/admin-settings.png",
-              "alt": "benefits"
-            }
+            "title": "Editable outreach scripts",
+            "description": "Prepare suggestions for calls, messaging, meetings, and objections. Managers review them before use; nothing is auto-sent.",
+            "icon": "MessagesSquare",
+            "url": "/workbench?module=scripts"
           },
           {
-            "title": "Technical Guidance",
-            "description": "Get dedicated support and join our developer community to ensure your successful launch.",
-            "icon": "RiCodeFill",
-            "image": {
-              "src": "/imgs/features/landing-page.png",
-              "alt": "benefits"
-            }
+            "title": "Dynamic document checklist",
+            "description": "Separate collected, system-held, OCR-pending, and missing items while showing overall completeness.",
+            "icon": "FolderCheck",
+            "url": "/workbench?module=materials"
+          },
+          {
+            "title": "Connected follow-up tasks",
+            "description": "Record contact outcomes, customer feedback, and next actions in a continuous timeline with reminders.",
+            "icon": "CalendarClock",
+            "url": "/workbench?module=followup"
           }
         ]
       },
       "usage": {
+        "id": "workflow",
         "block": "features-step",
-        "id": "usage",
-        "title": "How to Launch with ShipAny",
-        "description": "Get your AI SaaS startup running in three simple steps:",
-        "image": {
-          "src": "/imgs/features/1.png",
-          "alt": "usage"
-        },
-        "image_position": "left",
-        "text_align": "center",
+        "label": "Standard workflow",
+        "title": "Move from customer opportunity to follow-up in seven clear steps",
+        "description": "Human review points remain visible throughout, combining AI efficiency with business control.",
         "items": [
           {
-            "title": "Get ShipAny",
-            "description": "Buy ShipAny with a one-time payment. Check your email for the code and documentation.",
-            "image": {
-              "src": "/imgs/features/5.png",
-              "alt": "usage"
-            }
+            "title": "Screen and capture",
+            "description": "Prioritize customers, upload core documents, and add interview notes.",
+            "icon": "UserRoundSearch"
           },
           {
-            "title": "Start Your Project",
-            "description": "Read the documentation and clone the code of ShipAny. Start building your AI SaaS startup.",
-            "image": {
-              "src": "/imgs/features/6.png",
-              "alt": "usage"
-            }
+            "title": "Profile and match",
+            "description": "Build the profile, confirm needs, and identify product directions and open conditions.",
+            "icon": "ScanSearch"
           },
           {
-            "title": "Customize Your Project",
-            "description": "Modify the template with your data and contents. Specific AI functionality needs.",
-            "image": {
-              "src": "/imgs/features/7.png",
-              "alt": "usage"
-            }
+            "title": "Prepare outreach and documents",
+            "description": "Create talking points and a dynamic checklist for relationship-manager review.",
+            "icon": "ClipboardCheck"
           },
           {
-            "title": "Deploy to Production",
-            "description": "Deploy your project to production with a few steps and start serving customers immediately.",
-            "image": {
-              "src": "/imgs/features/8.png",
-              "alt": "usage"
-            }
+            "title": "Package and follow up",
+            "description": "Compile the post-meeting package and schedule the next customer action.",
+            "icon": "PackageCheck"
           }
-        ],
-        "className": "bg-muted"
+        ]
       },
       "features": {
         "id": "features",
-        "title": "Key Features of ShipAny",
-        "description": "Everything you need to launch your AI SaaS startup quickly and efficiently.",
+        "block": "features",
+        "title": "Eight core capabilities built for retail relationship managers",
+        "description": "Cover the V1 business workflow, with future integration paths for credit data, core systems, approvals, enterprise messaging, and analytics.",
         "items": [
           {
-            "title": "Next.js Boilerplate",
-            "description": "Production-ready Next.js templates with SEO-friendly structure and i18n support.",
-            "icon": "RiNextjsFill"
+            "title": "Priority customer list",
+            "description": "Identify today's priority customers by business rules and show the recommendation reason and latest follow-up.",
+            "icon": "Rows3",
+            "url": "/workbench?module=ledger"
           },
           {
-            "title": "Authentication & Payments",
-            "description": "Integrated Google OAuth, one-tap login, and Stripe payment processing.",
-            "icon": "RiKey2Fill"
+            "title": "Document and statement OCR",
+            "description": "Extract identity, entity, and income fields while flagging low-confidence content for review.",
+            "icon": "ScanLine",
+            "url": "/workbench?module=ocr"
           },
           {
-            "title": "Data Infrastructure",
-            "description": "Built-in Supabase integration for reliable and scalable data storage.",
-            "icon": "RiDatabase2Line"
+            "title": "Intelligent interview structuring",
+            "description": "Recognize confirmed needs, customer concerns, and still-unknown information from unstructured notes.",
+            "icon": "FileSearch2",
+            "url": "/workbench?module=interview"
           },
           {
-            "title": "One-Click Deployment",
-            "description": "Seamless deployment to Vercel or Cloudflare with automated setup.",
-            "icon": "RiCloudy2Fill"
+            "title": "Unified customer profile",
+            "description": "Combine customer, internal, external-credit, and current-needs data with field-level traceability.",
+            "icon": "UserRoundCog",
+            "url": "/workbench?module=profile"
           },
           {
-            "title": "Business Analytics",
-            "description": "Integrated Google Analytics and Search Console for tracking growth.",
-            "icon": "RiBarChart2Line"
+            "title": "Product-match explanation",
+            "description": "Provide a direction, rationale, and eligibility boundaries without presenting assistance as an approval result.",
+            "icon": "GitCompareArrows",
+            "url": "/workbench?module=matching"
           },
           {
-            "title": "AI-Ready Infrastructure",
-            "description": "Pre-configured AI integration with built-in credits system and API sales.",
-            "icon": "RiRobot2Line"
+            "title": "Intelligent outreach scripts",
+            "description": "Create editable suggestions for calls, messaging, meetings, and objections, with manager review before use.",
+            "icon": "MessageSquareText",
+            "url": "/workbench?module=scripts"
+          },
+          {
+            "title": "Documents and follow-up management",
+            "description": "Maintain document completeness, contact outcomes, customer feedback, next actions, and reminder dates.",
+            "icon": "FolderClock",
+            "url": "/workbench?module=materials"
+          },
+          {
+            "title": "One-click post-meeting package",
+            "description": "Bundle notes, needs, product fit, scripts, documents, and tasks so work continues without losing context.",
+            "icon": "BriefcaseBusiness",
+            "url": "/workbench?module=followup"
           }
         ]
       },
       "stats": {
-        "id": "stats",
-        "title": "People Love ShipAny",
-        "description": "for it's easy to use and fast to ship.",
+        "id": "value",
+        "block": "stats",
+        "title": "Designed around real business actions, not a collection of features",
+        "description": "The product follows the relationship manager's standard workflow, with visible review and traceability at critical points.",
         "items": [
           {
-            "title": "999+",
-            "description": "Customers"
+            "title": "7 steps",
+            "description": "Across the standard workflow"
           },
           {
-            "title": "200+",
-            "description": "Blocks"
+            "title": "1 workspace",
+            "description": "For the complete customer view"
           },
           {
-            "title": "50+",
-            "description": "Templates"
-          }
-        ],
-        "className": "bg-muted"
-      },
-      "testimonials": {
-        "id": "testimonials",
-        "title": "What Users Say About ShipAny",
-        "description": "Hear from developers and founders who launched their AI startups with ShipAny.",
-        "items": [
-          {
-            "name": "David Chen",
-            "role": "Founder of AIWallpaper.shop",
-            "quote": "ShipAny saved us months of development time. We launched our AI wallpaper business in just 2 days and got our first paying customer within a week!",
-            "image": {
-              "src": "/imgs/avatars/1.png",
-              "alt": "david"
-            }
-          },
-          {
-            "name": "Rachel Kim",
-            "role": "CTO at HeyBeauty.ai",
-            "quote": "The pre-built AI infrastructure is a game-changer. We didn't have to worry about architecture - just focused on our AI beauty tech and went live fast.",
-            "image": {
-              "src": "/imgs/avatars/2.png",
-              "alt": "rachel"
-            }
-          },
-          {
-            "name": "Marcus Thompson",
-            "role": "Solo Developer",
-            "quote": "As a solo developer, ShipAny gave me everything I needed - auth, payments, AI integration, and beautiful UI. Launched my SaaS in a weekend!",
-            "image": {
-              "src": "/imgs/avatars/3.png",
-              "alt": "marcus"
-            }
-          },
-          {
-            "name": "Sofia Garcia",
-            "role": "CEO of Melodisco",
-            "quote": "The templates are production-ready and highly customizable. We built our AI music platform in hours instead of months. Incredible time-to-market!",
-            "image": {
-              "src": "/imgs/avatars/4.png",
-              "alt": "sofia"
-            }
-          },
-          {
-            "name": "James Wilson",
-            "role": "Tech Lead at GPTs.works",
-            "quote": "ShipAny's infrastructure is rock-solid. We scaled from 0 to 10k users without touching the backend. Best investment for our AI startup.",
-            "image": {
-              "src": "/imgs/avatars/5.png",
-              "alt": "james"
-            }
-          },
-          {
-            "name": "Anna Zhang",
-            "role": "Startup Founder",
-            "quote": "From idea to launch in 3 days! ShipAny's templates and deployment tools made it possible to test our AI business concept incredibly fast.",
-            "image": {
-              "src": "/imgs/avatars/6.png",
-              "alt": "anna"
-            }
+            "title": "End to end",
+            "description": "With review and compliance boundaries"
           }
         ]
       },
       "faq": {
         "id": "faq",
-        "title": "Frequently Asked Questions About ShipAny",
-        "description": "Have another question? Contact us on Discord or by email.",
+        "block": "faq",
+        "title": "Frequently asked questions",
+        "description": "Key points about AI assistance, data handling, and day-to-day business use.",
         "items": [
           {
-            "question": "What exactly is ShipAny and how does it work?",
-            "answer": "ShipAny is a comprehensive NextJS boilerplate designed specifically for building AI SaaS startups. It provides ready-to-use templates, infrastructure setup, and deployment tools that help you launch your AI business in hours instead of days."
+            "question": "Can an AI-generated product suggestion be used as a credit decision?",
+            "answer": "No. The workspace structures information and supports product matching; it does not replace credit approval. Final amount, rate, term, security, and approval remain subject to the formal process."
           },
           {
-            "question": "Do I need advanced technical skills to use ShipAny?",
-            "answer": "While basic programming knowledge is helpful, ShipAny is designed to be developer-friendly. Our templates and documentation make it easy to get started, even if you're not an expert in AI or cloud infrastructure."
+            "question": "Do OCR and interview outputs require human review?",
+            "answer": "Yes. Original information, structured output, and open items remain visible so a relationship manager can verify them before the next step."
           },
           {
-            "question": "What types of AI SaaS can I build with ShipAny?",
-            "answer": "ShipAny supports a wide range of AI applications, from content generation to data analysis tools. Our templates cover popular use cases like AI chatbots, content generators, image processing apps, and more."
+            "question": "Does the system automatically send marketing messages?",
+            "answer": "No. It only creates editable script suggestions. A relationship manager must confirm customer consent, marketing restrictions, and content before sending."
           },
           {
-            "question": "How long does it typically take to launch with ShipAny?",
-            "answer": "With ShipAny, you can have a working prototype in hours and a production-ready application in hours. Our one-click deployment and pre-configured infrastructure significantly reduce the traditional months-long development cycle."
+            "question": "How should sensitive customer data be managed?",
+            "answer": "A production deployment should use role-based access, masking, access controls, and audit logs in line with the institution's applicable policies."
           },
           {
-            "question": "What's included in the ShipAny infrastructure?",
-            "answer": "ShipAny provides a complete infrastructure stack including authentication, database setup, API integration, payment processing, and scalable cloud deployment. Everything is pre-configured following industry best practices."
-          },
-          {
-            "question": "Can I customize the templates to match my brand?",
-            "answer": "Absolutely! All ShipAny templates are fully customizable. You can modify the design, features, and functionality to match your brand identity and specific business requirements while maintaining the robust underlying infrastructure."
-          }
-        ]
-      },
-      "cta": {
-        "id": "cta",
-        "title": "Ship your first AI SaaS Startup",
-        "description": "Start from here, ship with ShipAny.",
-        "buttons": [
-          {
-            "title": "Get ShipAny",
-            "url": "https://shipany.ai",
-            "target": "_blank",
-            "icon": "Zap"
-          },
-          {
-            "title": "Read Document",
-            "url": "/docs",
-            "target": "_blank",
-            "variant": "outline",
-            "icon": "BookOpenText"
+            "question": "Can it integrate with existing business systems?",
+            "answer": "Yes. The roadmap supports authorized integration with credit data, bank core data, approval workflows, enterprise messaging, and business analytics."
           }
         ],
-        "className": "bg-muted"
+        "tip": "This page describes product capabilities and does not constitute a credit commitment or financial advice."
       },
-      "subscribe": {
-        "id": "subscribe",
-        "title": "Subscribe to our newsletter",
-        "description": "Get the latest news and updates from ShipAny.",
-        "submit": {
-          "input": {
-            "placeholder": "Enter your email"
+      "cta": {
+        "id": "get-started",
+        "block": "cta",
+        "title": "Start with one customer conversation and make the next step clear",
+        "description": "Turn scattered customer information into reviewable, actionable, and continuously managed business outcomes.",
+        "buttons": [
+          {
+            "title": "Try the AI workspace",
+            "url": "/#assistant-panel",
+            "icon": "Sparkles"
           },
-          "button": {
-            "title": "Subscribe"
-          },
-          "action": "/api/subscribe"
-        },
-        "className": "bg-muted"
+          {
+            "title": "Explore capabilities",
+            "url": "/#features",
+            "variant": "outline",
+            "icon": "ArrowUpRight"
+          }
+        ]
       }
     }
   }

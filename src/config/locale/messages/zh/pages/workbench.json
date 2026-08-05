@@ -1,0 +1,279 @@
+{
+  "metadata": {
+    "title": "零售信贷展业工作台",
+    "description": "用于客户筛选、材料录入、访谈整理、客户画像、产品匹配、营销话术、材料清单和跟进提醒的交互工作台。"
+  },
+  "page": {
+    "show_sections": ["workspace"],
+    "sections": {
+      "workspace": {
+        "id": "workspace",
+        "block": "retail-workbench",
+        "back_title": "返回首页",
+        "eyebrow": "零售信贷展业助手",
+        "title": "展业工作台",
+        "description": "选择一个业务模块开始操作。当前版本提供完整的前端业务演示，所有 AI 与授信结果仍须客户经理复核。",
+        "demo_notice": "本地演示环境",
+        "module_label": "八项核心能力",
+        "modules": [
+          {
+            "id": "ledger",
+            "title": "客户台账与筛选",
+            "description": "按经营情况、贷款状态、到期时间和跟进间隔筛选优先客户。",
+            "icon": "UsersRound"
+          },
+          {
+            "id": "ocr",
+            "title": "OCR 材料录入",
+            "description": "识别证照和流水字段，对低置信度结果进行人工确认。",
+            "icon": "ScanLine"
+          },
+          {
+            "id": "interview",
+            "title": "访谈结构化",
+            "description": "将非结构化访谈记录整理为明确需求、顾虑和待确认事项。",
+            "icon": "FileSearch2"
+          },
+          {
+            "id": "profile",
+            "title": "客户画像",
+            "description": "统一维护客户基础、经营、行内关系、同业授信和当前需求。",
+            "icon": "ContactRound"
+          },
+          {
+            "id": "matching",
+            "title": "产品匹配",
+            "description": "根据已确认信息给出产品方向、匹配理由和待满足条件。",
+            "icon": "GitCompareArrows"
+          },
+          {
+            "id": "scripts",
+            "title": "智能营销话术",
+            "description": "生成电话、微信、面谈和异议处理场景的可编辑话术。",
+            "icon": "MessageSquareText"
+          },
+          {
+            "id": "materials",
+            "title": "材料清单",
+            "description": "维护已获取、系统已有、待确认和缺失材料及完整度。",
+            "icon": "FolderCheck"
+          },
+          {
+            "id": "followup",
+            "title": "跟进提醒",
+            "description": "记录联系结果、客户反馈和下一步任务，形成连续时间线。",
+            "icon": "CalendarClock"
+          }
+        ],
+        "copy": {
+          "shared": {
+            "save": "保存当前结果",
+            "saved": "当前操作已保存到本地演示工作台。"
+          },
+          "ledger": {
+            "search_placeholder": "搜索客户名称或行业",
+            "filters": [
+              { "id": "all", "title": "全部客户" },
+              { "id": "priority", "title": "今日优先" },
+              { "id": "maturity", "title": "临近到期" },
+              { "id": "unfollowed", "title": "久未跟进" }
+            ],
+            "columns": [
+              "客户",
+              "行业",
+              "月均流水",
+              "本行贷款",
+              "最近跟进",
+              "建议优先级"
+            ],
+            "rows": [
+              {
+                "name": "林记生鲜",
+                "industry": "社区零售",
+                "cashflow": "54 万元",
+                "loan": "无",
+                "followup": "38 天前",
+                "priority": "高 · 经营周转",
+                "segment": "priority"
+              },
+              {
+                "name": "远航汽配",
+                "industry": "汽车服务",
+                "cashflow": "86 万元",
+                "loan": "45 万元",
+                "followup": "12 天前",
+                "priority": "高 · 即将到期",
+                "segment": "maturity"
+              },
+              {
+                "name": "晴川餐饮",
+                "industry": "餐饮",
+                "cashflow": "31 万元",
+                "loan": "无",
+                "followup": "65 天前",
+                "priority": "中 · 久未跟进",
+                "segment": "unfollowed"
+              },
+              {
+                "name": "嘉木家居",
+                "industry": "家居零售",
+                "cashflow": "72 万元",
+                "loan": "20 万元",
+                "followup": "5 天前",
+                "priority": "常规维护",
+                "segment": "all"
+              }
+            ],
+            "result_label": "当前筛选得到 {count} 位客户，营销前请复核客户授权与风险标记。"
+          },
+          "ocr": {
+            "upload_title": "上传客户材料",
+            "upload_description": "支持身份证、营业执照和银行流水。当前为示例识别，不会上传真实文件。",
+            "select_button": "载入示例材料",
+            "demo_file": "示例：林记生鲜营业执照.pdf",
+            "result_title": "OCR 识别字段",
+            "pending": "等待人工确认",
+            "reviewed": "已人工确认",
+            "confirm_button": "确认识别结果",
+            "fields": [
+              { "label": "企业名称", "value": "林记生鲜店" },
+              { "label": "统一社会信用代码", "value": "91320100MA2XXXXXXX" },
+              { "label": "经营者", "value": "林晓峰" },
+              { "label": "成立日期", "value": "2019-06-18" },
+              { "label": "经营范围", "value": "生鲜食品、日用百货" },
+              { "label": "识别置信度", "value": "96.4%" }
+            ]
+          },
+          "interview": {
+            "input_title": "访谈纪要或电话摘要",
+            "sample": "客户经营一家社区生鲜店，日均流水约1.8万元，希望申请50万元用于旺季备货，期限12个月。名下有住房，暂未确认是否愿意抵押，比较关注放款速度和还款灵活性。",
+            "action": "生成结构化纪要",
+            "output_title": "结构化访谈结果",
+            "empty": "修改内容后，点击生成结构化纪要。",
+            "outputs": [
+              { "label": "资金用途", "value": "旺季生鲜及日用品备货" },
+              { "label": "金额与期限", "value": "申请50万元，期望期限12个月" },
+              { "label": "客户关注", "value": "放款速度、还款方式灵活性" },
+              {
+                "label": "待确认事项",
+                "value": "现有负债、抵押意愿、近6个月完整流水"
+              }
+            ]
+          },
+          "profile": {
+            "form_title": "客户基础与经营信息",
+            "fields": [
+              { "label": "客户名称", "value": "林记生鲜店" },
+              { "label": "经营年限", "value": "7 年" },
+              { "label": "所在行业", "value": "社区生鲜零售" },
+              { "label": "月均流水", "value": "约 54 万元" },
+              { "label": "本行关系", "value": "结算客户，无贷款" },
+              { "label": "当前需求", "value": "50 万元经营周转" }
+            ],
+            "summary_title": "画像完整度",
+            "completeness": "86%",
+            "tags": [
+              "经营流水稳定",
+              "本行无经营贷款",
+              "经营年限超过5年",
+              "抵押偏好待确认"
+            ]
+          },
+          "matching": {
+            "customer_title": "当前客户需求",
+            "customer_summary": "经营周转50万元 · 期限12个月 · 关注放款速度 · 担保方式待确认",
+            "action": "重新计算匹配",
+            "products": [
+              {
+                "label": "首推方向",
+                "title": "小微经营信用贷",
+                "score": "92",
+                "reason": "经营流水稳定、本行结算关系良好、当前无本行经营贷款，适合优先评估信用方式。",
+                "condition": "待补充近6个月完整流水、征信授权及现有负债信息。"
+              },
+              {
+                "label": "备选方向",
+                "title": "房产抵押经营贷",
+                "score": "78",
+                "reason": "客户名下有住房，可在信用额度不足时作为备选方案进一步沟通。",
+                "condition": "待确认产权情况、抵押意愿和房产估值。"
+              }
+            ],
+            "disclaimer": "匹配结果仅用于展业辅助，额度、利率、期限和审批结果以正式授信审批为准。"
+          },
+          "scripts": {
+            "scenario_title": "选择沟通场景",
+            "output_title": "可编辑话术建议",
+            "editable": "客户经理确认后使用",
+            "confirm_button": "确认并保存话术",
+            "scenarios": [
+              {
+                "title": "首次电话联系",
+                "content": "林先生您好，我是您的客户经理。我们注意到贵店近期经营流水比较稳定，想了解一下旺季备货是否有资金安排需求。我可以根据您的经营情况先协助梳理合适方向，具体额度和条件仍以正式审批为准。"
+              },
+              {
+                "title": "微信跟进",
+                "content": "林先生您好，今天沟通的50万元备货需求我已经做了初步整理。建议先补充近6个月经营流水和现有负债情况，我会在资料确认后进一步说明可评估的产品方向。"
+              },
+              {
+                "title": "异议处理",
+                "content": "理解您对办理时间的关注。我们可以先把基础材料和需求一次整理完整，减少后续重复补充；实际办理时间仍取决于资料完整度和正式审批流程。"
+              }
+            ]
+          },
+          "materials": {
+            "list_title": "动态材料清单",
+            "progress_title": "材料完整度",
+            "progress_text": "已完成 {complete}/{total} 项，勾选材料可实时更新完整度。",
+            "items": [
+              {
+                "title": "客户身份证明",
+                "description": "已获取 · OCR已确认",
+                "complete": true
+              },
+              {
+                "title": "营业执照",
+                "description": "已获取 · OCR已确认",
+                "complete": true
+              },
+              {
+                "title": "近6个月银行流水",
+                "description": "已获取 · 待核验完整性",
+                "complete": true
+              },
+              {
+                "title": "经营场所证明",
+                "description": "仍缺失",
+                "complete": false
+              },
+              {
+                "title": "贷款用途材料",
+                "description": "仍缺失",
+                "complete": false
+              },
+              {
+                "title": "现有负债说明",
+                "description": "待客户补充",
+                "complete": false
+              }
+            ]
+          },
+          "followup": {
+            "add_title": "创建下一步任务",
+            "task_label": "跟进事项",
+            "task_placeholder": "例如：确认客户抵押意愿",
+            "date_label": "提醒日期",
+            "add_button": "添加跟进任务",
+            "timeline_title": "客户跟进时间线",
+            "task_meta": "客户经理 · 待执行",
+            "tasks": [
+              "电话确认旺季备货资金需求",
+              "收集近6个月经营流水",
+              "说明首推产品方向和待补条件"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

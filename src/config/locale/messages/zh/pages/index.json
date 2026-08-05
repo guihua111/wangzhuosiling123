@@ -2,421 +2,302 @@
   "page": {
     "show_sections": [
       "hero",
-      "logos",
       "introduce",
       "benefits",
       "usage",
       "features",
       "stats",
-      "testimonials",
       "faq",
       "cta"
     ],
     "sections": {
       "hero": {
         "id": "hero",
-        "title": "一小时快速上线你的 AI 创业项目",
-        "highlight_text": "一小时",
-        "description": "ShipAny 是用于构建 AI SaaS 创业项目的 NextJS 项目模板。<br/>集成常用功能，快速上线你的产品。",
+        "block": "hero",
         "announcement": {
-          "badge": "全新",
-          "title": "🎉 ShipAny 模板二已发布",
-          "url": "/pricing"
+          "title": "零售信贷展业助手 · AI 辅助工作台",
+          "url": "/#assistant-panel"
         },
-        "tip": "🎁 前 1000 名用户特价优惠",
+        "title": "零售信贷展业助手，让每次客户沟通都有下一步",
+        "highlight_text": "都有下一步",
+        "description": "面向零售客户经理的客户管理、需求整理、产品适配与跟进工作台。<br/>从访谈纪要到展业成果包，把分散信息转化为清晰、可复核、可执行的行动。",
         "buttons": [
           {
-            "title": "立即开始",
-            "icon": "Zap",
-            "url": "/pricing",
-            "target": "_self",
-            "variant": "default"
+            "title": "开始示例体验",
+            "icon": "Sparkles",
+            "url": "/#assistant-panel"
           },
           {
-            "title": "阅读文档",
-            "icon": "BookOpenText",
-            "url": "/docs",
-            "target": "_blank",
+            "title": "查看工作流程",
+            "icon": "Workflow",
+            "url": "/#workflow",
             "variant": "outline"
           }
         ],
-        "show_avatars": true,
-        "avatars_tip": "999+ 用户在使用 ShipAny 上站",
-        "show_award": false,
-        "image": {
-          "src": "/imgs/features/admin.png",
-          "alt": "hero",
-          "width": 1200,
-          "height": 800
-        },
-        "image_invert": {
-          "src": "/imgs/features/admin-dark.png",
-          "alt": "hero",
-          "width": 1200,
-          "height": 800
-        },
-        "background_image": {
-          "src": "/imgs/bg/tree.jpg",
-          "alt": "hero"
+        "tip": "AI 结果须经客户经理复核，不替代授信审批。",
+        "show_avatars": false,
+        "assistant_panel": {
+          "eyebrow": "AI 工作台 · 示例体验",
+          "title": "输入客户信息，生成结构化展业建议",
+          "description": "选择一个工作场景，补充或修改示例内容，快速查看需求摘要、产品方向与下一步行动。",
+          "input_label": "客户信息或访谈纪要",
+          "output_label": "展业建议预览",
+          "generate_label": "生成展业建议",
+          "generating_label": "正在整理信息…",
+          "edit_hint": "可直接修改示例内容后重新生成",
+          "compliance": "示例结果 · 人工复核后使用",
+          "result_labels": {
+            "need": "需求摘要",
+            "match": "产品方向",
+            "action": "下一步行动"
+          },
+          "modes": [
+            {
+              "title": "访谈纪要",
+              "prompt": "客户经营一家社区生鲜店，日均流水约1.8万元，计划申请50万元用于旺季备货，期望期限12个月。名下有住房，暂未确认是否接受抵押，希望尽快了解可行方案。",
+              "result": {
+                "need": "经营周转需求50万元，期限12个月，资金用途为旺季备货；担保偏好尚待确认。",
+                "match": "优先评估小微经营流动资金方向；额度、利率、期限及担保方式以正式审批为准。",
+                "action": "确认近6个月经营流水、现有负债与担保意愿，并补充营业执照及主要经营证明。"
+              }
+            },
+            {
+              "title": "客户筛选",
+              "prompt": "筛选条件：近90天有稳定经营流水、当前无本行经营贷、最近一次跟进超过30天，并排除明确拒绝营销或高风险客户。",
+              "result": {
+                "need": "建立待跟进客户清单，优先关注有稳定经营表现且近期未触达的客户。",
+                "match": "按资金周转、经营扩张等潜在需求标记产品方向，不在筛选阶段形成授信结论。",
+                "action": "复核营销授权与风险标记，确认优先级后生成首轮联系话术和跟进任务。"
+              }
+            },
+            {
+              "title": "材料识别",
+              "prompt": "已获取：身份证、营业执照、近6个月银行流水。待确认：经营场所证明、贷款用途材料、配偶信息。",
+              "result": {
+                "need": "基础身份与经营主体材料已具备，经营和收入信息可进入人工核验。",
+                "match": "材料完整度支持初步产品适配，仍需依据缺失项确认具体准入条件。",
+                "action": "核对OCR字段与原件，补充经营场所、用途及必要关联人材料，并记录来源。"
+              }
+            }
+          ]
         }
       },
-      "logos": {
-        "title": "ShipAny 使用以下技术栈构建",
+      "introduce": {
+        "id": "capabilities",
+        "block": "features",
+        "title": "一个工作台，串起客户经理的日常展业闭环",
+        "description": "从发现机会到持续跟进，核心信息集中沉淀，减少重复录入和多系统切换。",
         "items": [
           {
-            "title": "Next.js",
-            "image": {
-              "src": "/imgs/logos/nextjs.svg",
-              "alt": "Next.js"
-            }
+            "title": "客户台账与筛选",
+            "description": "按经营流水、贷款状态、到期时间和跟进间隔筛选优先客户，并保留营销限制与风险标记。",
+            "icon": "UsersRound",
+            "url": "/workbench?module=ledger"
           },
           {
-            "title": "React",
-            "image": {
-              "src": "/imgs/logos/react.svg",
-              "alt": "React"
-            }
+            "title": "OCR 材料录入",
+            "description": "识别身份证、营业执照和银行流水等材料，展示置信度并等待客户经理确认。",
+            "icon": "ScanText",
+            "url": "/workbench?module=ocr"
           },
           {
-            "title": "TailwindCSS",
-            "image": {
-              "src": "/imgs/logos/tailwindcss.svg",
-              "alt": "TailwindCSS"
-            }
+            "title": "访谈结构化",
+            "description": "将面谈笔记、电话摘要或录音内容整理为用途、金额、期限、担保偏好和待确认事项。",
+            "icon": "ListChecks",
+            "url": "/workbench?module=interview"
           },
           {
-            "title": "Shadcn/UI",
-            "image": {
-              "src": "/imgs/logos/shadcn.svg",
-              "alt": "Shadcn/UI"
-            }
-          },
-          {
-            "title": "Vercel",
-            "image": {
-              "src": "/imgs/logos/vercel.svg",
-              "alt": "Vercel"
-            }
+            "title": "客户画像",
+            "description": "统一呈现基本信息、行内关系、同业授信与当前需求，并记录关键字段来源。",
+            "icon": "ContactRound",
+            "url": "/workbench?module=profile"
           }
         ]
       },
-      "introduce": {
-        "block": "features-list",
-        "id": "introduce",
-        "title": "ShipAny 是什么？",
-        "label": "产品简介",
-        "description": "ShipAny 是专为 AI SaaS 创业项目打造的 NextJS 脚手架，包括丰富模板、组件及文档。",
-        "image": {
-          "src": "/imgs/features/landing-page.png",
-          "alt": "introduce"
-        },
-        "items": [
-          {
-            "title": "开箱即用的模板",
-            "description": "从数十款生产级 AI SaaS 模板中选择，快速开启你的项目。",
-            "icon": "RiNextjsFill",
-            "image": {
-              "src": "/imgs/features/1.png",
-              "alt": "introduce"
-            }
-          },
-          {
-            "title": "基础设施搭建",
-            "description": "内置最佳实践，即刻拥有可扩展的基础设施。",
-            "icon": "RiDatabase2Line",
-            "image": {
-              "src": "/imgs/features/2.png",
-              "alt": "introduce"
-            }
-          },
-          {
-            "title": "极速部署",
-            "description": "AI SaaS 产品快速上线，助力小时级交付。",
-            "icon": "RiCloudyFill",
-            "image": {
-              "src": "/imgs/features/3.png",
-              "alt": "introduce"
-            }
-          },
-          {
-            "title": "AI 集成",
-            "description": "通过内置的 AI SDK，轻松为你的项目集成 AI 能力。",
-            "icon": "RiRobot2Line",
-            "image": {
-              "src": "/imgs/features/4.png",
-              "alt": "introduce"
-            }
-          }
-        ],
-        "className": "bg-muted"
-      },
       "benefits": {
-        "block": "features-accordion",
-        "id": "benefits",
-        "title": "为何选择 ShipAny",
-        "label": "产品优势",
-        "description": "你获得一切 AI 创业所需——从开箱即用的模板到专业技术支持。",
+        "id": "outcomes",
+        "block": "features",
+        "title": "让信息真正变成可执行的展业成果",
+        "description": "围绕客户当前需求，形成有依据、有边界、有下一步的工作输出。",
         "items": [
           {
-            "title": "全栈解决方案",
-            "description": "基于 Next.js，集成认证、支付、AI，一站式开箱即用。",
-            "icon": "RiNextjsFill",
-            "image": {
-              "src": "/imgs/features/user-billing.png",
-              "alt": "benefits"
-            }
+            "title": "产品适配有依据",
+            "description": "给出首推方向、匹配理由、已满足和待补充条件，帮助客户经理快速聚焦可行方案。",
+            "icon": "BadgeCheck",
+            "url": "/workbench?module=matching"
           },
           {
-            "title": "丰富模板库",
-            "description": "多样的 AI SaaS 模板，点击即用，涵盖聊天、图像生成等多场景。",
-            "icon": "RiClapperboardAiLine",
-            "image": {
-              "src": "/imgs/features/admin-settings.png",
-              "alt": "benefits"
-            }
+            "title": "沟通话术可编辑",
+            "description": "按电话、微信、面谈和异议处理场景生成建议话术，由客户经理确认后使用，不自动发送。",
+            "icon": "MessagesSquare",
+            "url": "/workbench?module=scripts"
           },
           {
-            "title": "专属技术指导",
-            "description": "享受专属技术支持与开发者社区，为你的成功保驾护航。",
-            "icon": "RiCodeFill",
-            "image": {
-              "src": "/imgs/features/landing-page.png",
-              "alt": "benefits"
-            }
+            "title": "材料清单动态更新",
+            "description": "区分已获取、系统已有、OCR待确认和仍缺失材料，清楚展示完整度。",
+            "icon": "FolderCheck",
+            "url": "/workbench?module=materials"
+          },
+          {
+            "title": "跟进任务持续衔接",
+            "description": "记录联系结果、客户反馈和下一步计划，形成时间轴与待办提醒。",
+            "icon": "CalendarClock",
+            "url": "/workbench?module=followup"
           }
         ]
       },
       "usage": {
+        "id": "workflow",
         "block": "features-step",
-        "id": "usage",
-        "title": "三步使用 ShipAny 极速上线",
-        "description": "只需三步，快速开启你的 AI SaaS 创业之路：",
-        "image": {
-          "src": "/imgs/features/1.png",
-          "alt": "usage"
-        },
-        "image_position": "left",
-        "text_align": "center",
+        "label": "标准工作流程",
+        "title": "从客户机会到跟进闭环，七步清晰推进",
+        "description": "每一步都保留人工确认点，让 AI 提效与业务合规同时成立。",
         "items": [
           {
-            "title": "获取 ShipAny",
-            "description": "一次性购买 ShipAny，查收邮件获取代码与文档。",
-            "image": {
-              "src": "/imgs/features/5.png",
-              "alt": "usage"
-            }
+            "title": "筛选与录入",
+            "description": "筛选重点客户，上传证照流水，并补充访谈纪要。",
+            "icon": "UserRoundSearch"
           },
           {
-            "title": "启动你的项目",
-            "description": "阅读说明文档，克隆 ShipAny 代码，开始开发你的 AI SaaS 项目。",
-            "image": {
-              "src": "/imgs/features/6.png",
-              "alt": "usage"
-            }
+            "title": "画像与适配",
+            "description": "生成客户画像，核对需求后匹配产品方向和待补条件。",
+            "icon": "ScanSearch"
           },
           {
-            "title": "个性化定制",
-            "description": "根据需求修改模板内容和数据，配置专属 AI 能力。",
-            "image": {
-              "src": "/imgs/features/7.png",
-              "alt": "usage"
-            }
+            "title": "话术与材料",
+            "description": "生成沟通建议和动态材料清单，完成客户经理复核。",
+            "icon": "ClipboardCheck"
           },
           {
-            "title": "部署上线",
-            "description": "简单几步将你的项目推向生产环境，立刻为客户提供服务。",
-            "image": {
-              "src": "/imgs/features/8.png",
-              "alt": "usage"
-            }
+            "title": "成果包与跟进",
+            "description": "汇总本次展业成果，创建下一次联系任务并持续更新。",
+            "icon": "PackageCheck"
           }
-        ],
-        "className": "bg-muted"
+        ]
       },
       "features": {
         "id": "features",
-        "title": "ShipAny 核心功能",
-        "description": "一切你需要的工具，助力 AI SaaS 项目高效上线。",
+        "block": "features",
+        "title": "为零售客户经理设计的八项核心能力",
+        "description": "覆盖 V1 展业主流程，后续可按业务需要接入征信、核心系统、审批流与企微。",
         "items": [
           {
-            "title": "Next.js 项目模板",
-            "description": "生产就绪、支持 SEO 与多语言的 Next.js 脚手架。",
-            "icon": "RiNextjsFill"
+            "title": "优先客户清单",
+            "description": "按业务规则识别今日优先跟进对象，并展示推荐理由与最近跟进。",
+            "icon": "Rows3",
+            "url": "/workbench?module=ledger"
           },
           {
-            "title": "身份认证与支付",
-            "description": "集成谷歌 OAuth、一键登录，以及 Stripe 支付。",
-            "icon": "RiKey2Fill"
+            "title": "证照与流水 OCR",
+            "description": "提取身份、经营主体与收入字段，对低置信度内容提示人工确认。",
+            "icon": "ScanLine",
+            "url": "/workbench?module=ocr"
           },
           {
-            "title": "数据基础设施",
-            "description": "内置 Supabase，稳定可靠的数据存储。",
-            "icon": "RiDatabase2Line"
+            "title": "智能访谈整理",
+            "description": "从非结构化记录中识别明确需求、客户顾虑和仍未知的信息。",
+            "icon": "FileSearch2",
+            "url": "/workbench?module=interview"
           },
           {
-            "title": "一键部署",
-            "description": "自动化部署到 Vercel 或 Cloudflare，极速上线。",
-            "icon": "RiCloudy2Fill"
+            "title": "统一客户画像",
+            "description": "整合客户基础、行内、同业和本次需求信息，支持字段追溯。",
+            "icon": "UserRoundCog",
+            "url": "/workbench?module=profile"
           },
           {
-            "title": "商业分析",
-            "description": "集成 Google Analytics、Search Console，助力业务增长。",
-            "icon": "RiBarChart2Line"
+            "title": "产品匹配说明",
+            "description": "输出匹配方向、理由和条件边界，不将建议包装成审批结果。",
+            "icon": "GitCompareArrows",
+            "url": "/workbench?module=matching"
           },
           {
-            "title": "AI 原生基础设施",
-            "description": "预置 AI 集成、积分系统和 API 售卖能力。",
-            "icon": "RiRobot2Line"
+            "title": "智能营销话术",
+            "description": "按电话、微信、面谈和异议处理场景生成可编辑建议，发送前由客户经理确认。",
+            "icon": "MessageSquareText",
+            "url": "/workbench?module=scripts"
+          },
+          {
+            "title": "材料与跟进管理",
+            "description": "动态维护材料完整度、联系结果、客户反馈、下一步计划和提醒时间。",
+            "icon": "FolderClock",
+            "url": "/workbench?module=materials"
+          },
+          {
+            "title": "一键会后成果包",
+            "description": "汇总纪要、需求、产品适配、话术、材料和跟进任务，便于继续执行。",
+            "icon": "BriefcaseBusiness",
+            "url": "/workbench?module=followup"
           }
         ]
       },
       "stats": {
-        "id": "stats",
-        "title": "用户喜爱 ShipAny",
-        "description": "因其易用且上线飞快。",
+        "id": "value",
+        "block": "stats",
+        "title": "围绕真实展业动作设计，而不是堆叠功能",
+        "description": "产品结构来自客户经理的标准业务链路，关键节点均可人工确认与追溯。",
         "items": [
           {
-            "title": "999+",
-            "description": "位用户"
+            "title": "7 步",
+            "description": "覆盖标准展业流程"
           },
           {
-            "title": "200+",
-            "description": "组件块"
+            "title": "1 个",
+            "description": "统一客户工作台"
           },
           {
-            "title": "50+",
-            "description": "专业模板"
-          }
-        ],
-        "className": "bg-muted"
-      },
-      "testimonials": {
-        "id": "testimonials",
-        "title": "用户对 ShipAny 的评价",
-        "description": "听听开发者与创始人用 ShipAny 快速上线 AI 创业项目的故事。",
-        "items": [
-          {
-            "name": "David Chen",
-            "role": "AIWallpaper.shop 创始人",
-            "quote": "ShipAny 为我们节省了数月开发时间。2 天上线 AI 壁纸业务，一周内就收到了第一笔付费订单！",
-            "image": {
-              "src": "/imgs/avatars/1.png",
-              "alt": "david"
-            }
-          },
-          {
-            "name": "Rachel Kim",
-            "role": "HeyBeauty.ai CTO",
-            "quote": "内置 AI 基础设施颠覆了开发体验，无需担心架构，只需专注核心功能，极快落地。",
-            "image": {
-              "src": "/imgs/avatars/2.png",
-              "alt": "rachel"
-            }
-          },
-          {
-            "name": "Marcus Thompson",
-            "role": "独立开发者",
-            "quote": "作为独立开发者，ShipAny 满足了全部需求——认证、支付、AI 集成、美观界面，一个周末上线 SaaS！",
-            "image": {
-              "src": "/imgs/avatars/3.png",
-              "alt": "marcus"
-            }
-          },
-          {
-            "name": "Sofia Garcia",
-            "role": "Melodisco CEO",
-            "quote": "模板高度可定制且生产级。我们几小时内搭建出了 AI 音乐平台，上市周期大大缩短！",
-            "image": {
-              "src": "/imgs/avatars/4.png",
-              "alt": "sofia"
-            }
-          },
-          {
-            "name": "James Wilson",
-            "role": "GPTs.works 技术负责人",
-            "quote": "ShipAny 基础设施极其稳定。我们从 0 到 1 万用户，无需关心后端维护，是最棒的 AI 创业投资。",
-            "image": {
-              "src": "/imgs/avatars/5.png",
-              "alt": "james"
-            }
-          },
-          {
-            "name": "Anna Zhang",
-            "role": "创业者",
-            "quote": "从想法到上线，仅用 3 天！ShipAny 模板和部署工具让我们极快验证 AI 商业创意。",
-            "image": {
-              "src": "/imgs/avatars/6.png",
-              "alt": "anna"
-            }
+            "title": "全流程",
+            "description": "保留复核与合规边界"
           }
         ]
       },
       "faq": {
         "id": "faq",
-        "title": "关于 ShipAny 的常见问题",
-        "description": "还有其他问题？欢迎加入 Discord 或发邮件联系我们。",
+        "block": "faq",
+        "title": "常见问题",
+        "description": "关于 AI 建议、数据处理和实际业务使用的关键说明。",
         "items": [
           {
-            "question": "ShipAny 是什么？怎么帮到我？",
-            "answer": "ShipAny 是专为 AI SaaS 创业设计的 NextJS 全套脚手架，内含开箱即用的模板、基础设施搭建和部署工具，让你数小时内上线 AI 产品。"
+            "question": "AI 生成的产品建议可以直接作为授信结论吗？",
+            "answer": "不可以。系统用于整理信息和辅助产品适配，不替代授信审批。最终额度、利率、期限、担保方式和审批结果均以正式流程为准。"
           },
           {
-            "question": "使用 ShipAny 需要很高的技术水平吗？",
-            "answer": "有基础编程知识即可上手。ShipAny 面向开发者友好，详细文档和模板让初学者也能轻松起步，不需深厚 AI 或云计算背景。"
+            "question": "OCR 和访谈整理结果是否需要人工确认？",
+            "answer": "需要。系统会保留原始信息、结构化结果和待确认项，客户经理应在进入下一环节前完成核对。"
           },
           {
-            "question": "ShipAny 支持哪些类型的 AI SaaS 项目？",
-            "answer": "ShipAny 支持内容生成、数据分析、AI 聊天机器人、图片/内容生成器等多种主流 AI 应用场景。"
+            "question": "系统会自动向客户发送营销内容吗？",
+            "answer": "不会。系统只生成可编辑的话术建议，发送前应由客户经理确认客户授权、营销限制和沟通内容。"
           },
           {
-            "question": "用 ShipAny 一般多久能上线？",
-            "answer": "借助 ShipAny，可在数小时内拿到产品原型并上线生产环境，预配置的一键部署大幅缩短开发周期。"
+            "question": "客户敏感信息如何管理？",
+            "answer": "正式部署应结合机构要求配置角色权限、字段脱敏、访问控制和审计日志，并按适用制度管理数据。"
           },
           {
-            "question": "ShipAny 的基础设施包括哪些内容？",
-            "answer": "包含认证、数据库、API 集成、支付、云端部署等全栈解决方案，全部遵循业界最佳实践预配置。"
-          },
-          {
-            "question": "模板是否支持定制自己的品牌？",
-            "answer": "当然支持！所有模板均可自定义设计、功能和品牌，既保持基础架构稳定，又能满足个性扩展需求。"
-          }
-        ]
-      },
-      "cta": {
-        "id": "cta",
-        "title": "发布你的第一个 AI SaaS 项目",
-        "description": "从这里出发，用 ShipAny 极速交付。",
-        "buttons": [
-          {
-            "title": "获取 ShipAny",
-            "url": "https://shipany.ai",
-            "target": "_blank",
-            "icon": "Zap"
-          },
-          {
-            "title": "阅读文档",
-            "url": "/docs",
-            "target": "_blank",
-            "variant": "outline",
-            "icon": "BookOpenText"
+            "question": "后续可以接入现有业务系统吗？",
+            "answer": "可以。产品规划支持按授权接入征信、银行核心数据、审批流、企业微信和经营分析能力。"
           }
         ],
-        "className": "bg-muted"
+        "tip": "页面内容为产品能力说明，不构成任何授信承诺或金融建议。"
       },
-      "subscribe": {
-        "id": "subscribe",
-        "title": "订阅我们的邮件通知",
-        "description": "获取 ShipAny 最新资讯与产品动态。",
-        "submit": {
-          "input": {
-            "placeholder": "输入邮箱"
+      "cta": {
+        "id": "get-started",
+        "block": "cta",
+        "title": "从一次客户访谈开始，建立清晰的展业下一步",
+        "description": "把零散客户信息整理成可复核、可执行、可持续跟进的工作成果。",
+        "buttons": [
+          {
+            "title": "体验 AI 工作台",
+            "url": "/#assistant-panel",
+            "icon": "Sparkles"
           },
-          "button": {
-            "title": "订阅"
-          },
-          "action": "/api/subscribe"
-        },
-        "className": "bg-muted"
+          {
+            "title": "查看核心能力",
+            "url": "/#features",
+            "variant": "outline",
+            "icon": "ArrowUpRight"
+          }
+        ]
       }
     }
   }
