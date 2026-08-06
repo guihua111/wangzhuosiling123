@@ -89,8 +89,13 @@ export async function getAllConfigs(): Promise<Configs> {
   }
 
   const settingNames = await getAllSettingNames();
+  const envAliases: Record<string, string> = {
+    // VERCEL_* is reserved and populated by Vercel, so this setting must use
+    // a project-owned environment variable name instead.
+    vercel_analytics_enabled: 'NEXT_PUBLIC_VERCEL_ANALYTICS_ENABLED',
+  };
   settingNames.forEach((key) => {
-    const upperKey = key.toUpperCase();
+    const upperKey = envAliases[key] || key.toUpperCase();
     // use env configs if available
     if (process.env[upperKey]) {
       dbConfigs[key] = process.env[upperKey] ?? '';
