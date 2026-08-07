@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "title": "统一客户画像",
+    "description": "统一维护客户经营信息、行内关系、同业授信与当前需求。"
+  },
+  "page": {
+    "title": "统一客户画像",
+    "show_sections": ["workspace"],
+    "sections": {
+      "workspace": {
+        "id": "workspace",
+        "block": "retail-feature-page",
+        "module_id": "profile",
+        "title": "统一客户画像",
+        "description": "统一维护客户经营信息、行内关系、同业授信与当前需求。"
+      }
+    }
+  }
+}

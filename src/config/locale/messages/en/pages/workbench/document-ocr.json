@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "title": "Document & Statement OCR",
+    "description": "Extract and manually verify key fields from licenses, IDs, and bank statements."
+  },
+  "page": {
+    "title": "Document & Statement OCR",
+    "show_sections": ["workspace"],
+    "sections": {
+      "workspace": {
+        "id": "workspace",
+        "block": "retail-feature-page",
+        "module_id": "ocr",
+        "title": "Document & Statement OCR",
+        "description": "Extract and manually verify key fields from licenses, IDs, and bank statements."
+      }
+    }
+  }
+}

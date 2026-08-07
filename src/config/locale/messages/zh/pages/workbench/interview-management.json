@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "title": "智能访谈管理",
+    "description": "将访谈记录转为结构化需求、客户顾虑与待确认事项。"
+  },
+  "page": {
+    "title": "智能访谈管理",
+    "show_sections": ["workspace"],
+    "sections": {
+      "workspace": {
+        "id": "workspace",
+        "block": "retail-feature-page",
+        "module_id": "interview",
+        "title": "智能访谈管理",
+        "description": "将访谈记录转为结构化需求、客户顾虑与待确认事项。"
+      }
+    }
+  }
+}

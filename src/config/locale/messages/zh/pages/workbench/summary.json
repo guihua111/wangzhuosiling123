@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "title": "一键总结",
+    "description": "汇总访谈、画像、产品匹配、话术、材料和下一步行动，形成可复核的展业成果包。"
+  },
+  "page": {
+    "title": "一键总结",
+    "show_sections": ["workspace"],
+    "sections": {
+      "workspace": {
+        "id": "workspace",
+        "block": "retail-feature-page",
+        "module_id": "summary",
+        "title": "一键总结",
+        "description": "汇总访谈、画像、产品匹配、话术、材料和下一步行动，形成可复核的展业成果包。"
+      }
+    }
+  }
+}

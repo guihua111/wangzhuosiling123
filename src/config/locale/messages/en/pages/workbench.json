@@ -14,7 +14,7 @@
         "title": "Business Workbench",
         "description": "Choose a module and start working. This version provides an interactive front-end demonstration; AI and credit outputs still require manager review.",
         "demo_notice": "Local demo environment",
-        "module_label": "Eight core capabilities",
+        "module_label": "Eight core work modules",
         "modules": [
           {
             "id": "ledger",
@@ -23,20 +23,20 @@
             "icon": "UsersRound"
           },
           {
-            "id": "ocr",
-            "title": "OCR document intake",
-            "description": "Extract document and statement fields and review low-confidence results.",
-            "icon": "ScanLine"
-          },
-          {
             "id": "interview",
-            "title": "Interview structuring",
+            "title": "Intelligent interview management",
             "description": "Turn unstructured notes into needs, concerns, and open questions.",
             "icon": "FileSearch2"
           },
           {
+            "id": "ocr",
+            "title": "Document & statement OCR",
+            "description": "Extract document and statement fields and review low-confidence results.",
+            "icon": "ScanLine"
+          },
+          {
             "id": "profile",
-            "title": "Customer profile",
+            "title": "Unified customer profile",
             "description": "Maintain customer, business, bank relationship, external credit, and current-needs data.",
             "icon": "ContactRound"
           },
@@ -54,15 +54,15 @@
           },
           {
             "id": "materials",
-            "title": "Document checklist",
-            "description": "Track collected, system-held, pending, and missing documents with completeness.",
-            "icon": "FolderCheck"
+            "title": "Materials & follow-up management",
+            "description": "Track document completeness, customer feedback, next tasks, and reminders together.",
+            "icon": "FolderClock"
           },
           {
-            "id": "followup",
-            "title": "Follow-up reminders",
-            "description": "Record contact outcomes, feedback, and next tasks in a continuous timeline.",
-            "icon": "CalendarClock"
+            "id": "summary",
+            "title": "One-click summary",
+            "description": "Assemble the interview, profile, match, scripts, materials, and next actions.",
+            "icon": "BriefcaseBusiness"
           }
         ],
         "copy": {
@@ -71,6 +71,7 @@
             "saved": "The current operation was saved in the local demo workspace."
           },
           "ledger": {
+            "total_count": 63,
             "search_placeholder": "Search customer or industry",
             "filters": [
               { "id": "all", "title": "All customers" },
@@ -89,7 +90,7 @@
             "rows": [
               {
                 "name": "Lin Fresh Market",
-                "industry": "Neighborhood retail",
+                "industry": "Wholesale & retail · Neighborhood retail",
                 "cashflow": "RMB 540k",
                 "loan": "None",
                 "followup": "38 days ago",
@@ -98,7 +99,7 @@
               },
               {
                 "name": "Voyage Auto Parts",
-                "industry": "Automotive services",
+                "industry": "Wholesale & retail · Auto parts",
                 "cashflow": "RMB 860k",
                 "loan": "RMB 450k",
                 "followup": "12 days ago",
@@ -107,7 +108,7 @@
               },
               {
                 "name": "Clearwater Dining",
-                "industry": "Food service",
+                "industry": "Hospitality & resident services · Dining",
                 "cashflow": "RMB 310k",
                 "loan": "None",
                 "followup": "65 days ago",
@@ -116,10 +117,82 @@
               },
               {
                 "name": "Jiamu Home",
-                "industry": "Home retail",
+                "industry": "Wholesale & retail · Home retail",
                 "cashflow": "RMB 720k",
                 "loan": "RMB 200k",
                 "followup": "5 days ago",
+                "priority": "Routine service",
+                "segment": "all"
+              },
+              {
+                "name": "Huasheng Trading",
+                "industry": "Wholesale & retail · General merchandise",
+                "cashflow": "RMB 1.28m",
+                "loan": "None",
+                "followup": "18 days ago",
+                "priority": "High · Seasonal inventory",
+                "segment": "priority"
+              },
+              {
+                "name": "Lianfeng Machinery",
+                "industry": "Manufacturing · General equipment",
+                "cashflow": "RMB 2.05m",
+                "loan": "RMB 800k",
+                "followup": "9 days ago",
+                "priority": "High · Near maturity",
+                "segment": "maturity"
+              },
+              {
+                "name": "Qihang Packaging",
+                "industry": "Manufacturing · Packaging materials",
+                "cashflow": "RMB 1.46m",
+                "loan": "None",
+                "followup": "47 days ago",
+                "priority": "High · Equipment upgrade",
+                "segment": "priority"
+              },
+              {
+                "name": "Yunting Hotel",
+                "industry": "Hospitality & resident services · Lodging",
+                "cashflow": "RMB 930k",
+                "loan": "RMB 300k",
+                "followup": "21 days ago",
+                "priority": "Medium · Near maturity",
+                "segment": "maturity"
+              },
+              {
+                "name": "Yuemei Lifestyle",
+                "industry": "Hospitality & resident services · Personal services",
+                "cashflow": "RMB 420k",
+                "loan": "None",
+                "followup": "72 days ago",
+                "priority": "Medium · Re-engage",
+                "segment": "unfollowed"
+              },
+              {
+                "name": "Anda Cold Chain",
+                "industry": "Transportation · Cold-chain logistics",
+                "cashflow": "RMB 1.68m",
+                "loan": "RMB 600k",
+                "followup": "15 days ago",
+                "priority": "High · Near maturity",
+                "segment": "maturity"
+              },
+              {
+                "name": "Shuncheng Freight",
+                "industry": "Transportation · Road freight",
+                "cashflow": "RMB 1.17m",
+                "loan": "None",
+                "followup": "54 days ago",
+                "priority": "Medium · Re-engage",
+                "segment": "unfollowed"
+              },
+              {
+                "name": "Jianghai Delivery",
+                "industry": "Transportation · Urban delivery",
+                "cashflow": "RMB 760k",
+                "loan": "RMB 250k",
+                "followup": "6 days ago",
                 "priority": "Routine service",
                 "segment": "all"
               }
@@ -128,9 +201,10 @@
           },
           "ocr": {
             "upload_title": "Add customer documents",
-            "upload_description": "Identity documents, business licenses, and bank statements are supported. This demo does not upload real files.",
-            "select_button": "Load demo document",
-            "demo_file": "Demo: Lin Fresh Market business license.pdf",
+            "upload_description": "Identity documents, business licenses, and bank statements are supported. Select a file for OCR and manager review.",
+            "select_button": "Upload materials",
+            "selected_file": "Selected",
+            "file_hint": "PDF, PNG, JPG, and WebP supported",
             "result_title": "OCR-extracted fields",
             "pending": "Pending manager review",
             "reviewed": "Manager reviewed",
@@ -289,6 +363,34 @@
               "Collect six months of operating statements",
               "Explain the primary product direction and open conditions"
             ]
+          },
+          "summary": {
+            "metrics": [
+              { "value": "86%", "label": "Profile completeness" },
+              { "value": "92", "label": "Primary match score" },
+              { "value": "3/6", "label": "Documents complete" }
+            ],
+            "sections": [
+              {
+                "title": "Customer need",
+                "content": "RMB 500,000 in peak-season working capital for 12 months, with a focus on funding speed and repayment flexibility."
+              },
+              {
+                "title": "Product direction",
+                "content": "Primary: micro-business unsecured loan. Alternative: property-secured business loan. Final terms remain subject to approval."
+              },
+              {
+                "title": "Missing materials",
+                "content": "Add premises evidence, loan-purpose documents, and current liabilities, then verify six months of statement completeness."
+              },
+              {
+                "title": "Next action",
+                "content": "Confirm collateral preference, send the document checklist, and refresh the product match after all materials arrive."
+              }
+            ],
+            "action_title": "Create this business summary",
+            "action_description": "Save the structured result for outreach, document collection, and follow-up execution.",
+            "action_button": "Create and save summary"
           }
         }
       }

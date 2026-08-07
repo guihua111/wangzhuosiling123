@@ -2,9 +2,8 @@
   "page": {
     "show_sections": [
       "hero",
-      "introduce",
-      "benefits",
       "usage",
+      "pain_points",
       "features",
       "stats",
       "faq",
@@ -150,7 +149,7 @@
         "id": "workflow",
         "block": "features-step",
         "label": "标准工作流程",
-        "title": "从客户机会到跟进闭环，七步清晰推进",
+        "title": "从客户机会到跟进闭环，四步清晰推进",
         "description": "每一步都保留人工确认点，让 AI 提效与业务合规同时成立。",
         "items": [
           {
@@ -175,61 +174,112 @@
           }
         ]
       },
-      "features": {
-        "id": "features",
-        "block": "features",
-        "title": "为零售客户经理设计的八项核心能力",
-        "description": "覆盖 V1 展业主流程，后续可按业务需要接入征信、核心系统、审批流与企微。",
+      "pain_points": {
+        "id": "pain-points",
+        "block": "retail-pain-points",
+        "label": "客户经理常见痛点",
+        "title": "核心痛点",
+        "description": "信息分散、判断口径不一和材料反复补充，正在消耗客户经理的沟通时间，也影响客户体验与后续转化。",
         "items": [
           {
-            "title": "优先客户清单",
-            "description": "按业务规则识别今日优先跟进对象，并展示推荐理由与最近跟进。",
-            "icon": "Rows3",
-            "url": "/workbench?module=ledger"
+            "title": "信息跨环节重复确认",
+            "description": "客户信息散落在访谈、材料和多个系统中，进入下一环节时仍需反复核对。",
+            "icon": "RefreshCw"
+          },
+          {
+            "title": "沟通结果难以直接复用",
+            "description": "电话、微信和面谈纪要缺少统一结构，后续跟进往往需要重新整理。",
+            "icon": "MessagesSquare"
+          },
+          {
+            "title": "客户意向判断依赖经验",
+            "description": "客户需求和成交信号缺少清晰标记，优先级判断容易受个人经验影响。",
+            "icon": "BrainCircuit"
+          },
+          {
+            "title": "产品推荐讲解不够标准化",
+            "description": "推荐依据、适配条件和风险边界表达不统一，客户难以快速理解方案。",
+            "icon": "BadgeHelp"
+          },
+          {
+            "title": "材料要求难以一次明确",
+            "description": "材料清单随沟通反复变化，客户多次补交，拖慢后续业务推进。",
+            "icon": "Files"
+          }
+        ]
+      },
+      "features": {
+        "id": "features",
+        "block": "retail-feature-showcase",
+        "title": "为零售客户经理设计的八个核心工作模块",
+        "description": "从客户管理到会后总结，八个工作模块按照标准展业顺序固定呈现。",
+        "items": [
+          {
+            "title": "客户台账",
+            "icon": "Rows3"
+          },
+          {
+            "title": "智能访谈管理",
+            "icon": "FileSearch2"
           },
           {
             "title": "证照与流水 OCR",
-            "description": "提取身份、经营主体与收入字段，对低置信度内容提示人工确认。",
-            "icon": "ScanLine",
-            "url": "/workbench?module=ocr"
-          },
-          {
-            "title": "智能访谈整理",
-            "description": "从非结构化记录中识别明确需求、客户顾虑和仍未知的信息。",
-            "icon": "FileSearch2",
-            "url": "/workbench?module=interview"
+            "icon": "ScanLine"
           },
           {
             "title": "统一客户画像",
-            "description": "整合客户基础、行内、同业和本次需求信息，支持字段追溯。",
-            "icon": "UserRoundCog",
-            "url": "/workbench?module=profile"
+            "icon": "UserRoundCog"
           },
           {
-            "title": "产品匹配说明",
-            "description": "输出匹配方向、理由和条件边界，不将建议包装成审批结果。",
-            "icon": "GitCompareArrows",
-            "url": "/workbench?module=matching"
+            "title": "产品匹配",
+            "icon": "GitCompareArrows"
           },
           {
             "title": "智能营销话术",
-            "description": "按电话、微信、面谈和异议处理场景生成可编辑建议，发送前由客户经理确认。",
-            "icon": "MessageSquareText",
-            "url": "/workbench?module=scripts"
+            "icon": "MessageSquareText"
           },
           {
             "title": "材料与跟进管理",
-            "description": "动态维护材料完整度、联系结果、客户反馈、下一步计划和提醒时间。",
-            "icon": "FolderClock",
-            "url": "/workbench?module=materials"
+            "icon": "FolderClock"
           },
           {
-            "title": "一键会后成果包",
-            "description": "汇总纪要、需求、产品适配、话术、材料和跟进任务，便于继续执行。",
-            "icon": "BriefcaseBusiness",
-            "url": "/workbench?module=followup"
+            "title": "一键总结",
+            "icon": "BriefcaseBusiness"
           }
-        ]
+        ],
+        "showcase": {
+          "label": "功能展示",
+          "title": "客户台账，把待跟进机会放在一个视图里",
+          "description": "集中查看客户经营信息、贷款状态、最近跟进与建议优先级，并通过搜索和业务标签快速筛选今天需要触达的客户。",
+          "bullets": [
+            "按客户名称或行业快速搜索",
+            "支持今日优先、临近到期和久未跟进筛选",
+            "保留营销授权、风险标记与人工复核边界"
+          ],
+          "button": "打开客户台账",
+          "url": "/workbench/customer-ledger",
+          "preview_title": "今日客户机会",
+          "preview_description": "示例业务数据 · 可进入完整页面操作",
+          "status": "数据已更新",
+          "metrics": [
+            { "value": "30", "label": "待触达客户" },
+            { "value": "8", "label": "今日优先" },
+            { "value": "5", "label": "临近到期" }
+          ],
+          "rows": [
+            {
+              "name": "林记生鲜",
+              "industry": "社区零售",
+              "priority": "高优先"
+            },
+            {
+              "name": "远航汽配",
+              "industry": "汽车服务",
+              "priority": "即将到期"
+            },
+            { "name": "晴川餐饮", "industry": "餐饮", "priority": "待跟进" }
+          ]
+        }
       },
       "stats": {
         "id": "value",
@@ -238,12 +288,12 @@
         "description": "产品结构来自客户经理的标准业务链路，关键节点均可人工确认与追溯。",
         "items": [
           {
-            "title": "7 步",
-            "description": "覆盖标准展业流程"
+            "title": "30 个客户",
+            "description": "已完成触达"
           },
           {
-            "title": "1 个",
-            "description": "统一客户工作台"
+            "title": "45 个方案",
+            "description": "已完成设计"
           },
           {
             "title": "全流程",

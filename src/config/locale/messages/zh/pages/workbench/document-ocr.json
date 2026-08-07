@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "title": "证照与流水 OCR",
+    "description": "提取证照、身份材料和银行流水字段，并支持人工复核。"
+  },
+  "page": {
+    "title": "证照与流水 OCR",
+    "show_sections": ["workspace"],
+    "sections": {
+      "workspace": {
+        "id": "workspace",
+        "block": "retail-feature-page",
+        "module_id": "ocr",
+        "title": "证照与流水 OCR",
+        "description": "提取证照、身份材料和银行流水字段，并支持人工复核。"
+      }
+    }
+  }
+}

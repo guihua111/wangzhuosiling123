@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "title": "One-click Summary",
+    "description": "Assemble the interview, profile, match, scripts, materials, and next actions into one result."
+  },
+  "page": {
+    "title": "One-click Summary",
+    "show_sections": ["workspace"],
+    "sections": {
+      "workspace": {
+        "id": "workspace",
+        "block": "retail-feature-page",
+        "module_id": "summary",
+        "title": "One-click Summary",
+        "description": "Assemble the interview, profile, match, scripts, materials, and next actions into one result."
+      }
+    }
+  }
+}

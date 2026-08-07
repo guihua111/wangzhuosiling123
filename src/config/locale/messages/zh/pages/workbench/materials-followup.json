@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "title": "材料与跟进管理",
+    "description": "统一维护材料完整度、客户反馈、下一步任务和提醒时间。"
+  },
+  "page": {
+    "title": "材料与跟进管理",
+    "show_sections": ["workspace"],
+    "sections": {
+      "workspace": {
+        "id": "workspace",
+        "block": "retail-feature-page",
+        "module_id": "materials",
+        "title": "材料与跟进管理",
+        "description": "统一维护材料完整度、客户反馈、下一步任务和提醒时间。"
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "title": "Customer Ledger",
+    "description": "Search, filter, and prioritize retail customers in one traceable ledger."
+  },
+  "page": {
+    "title": "Customer Ledger",
+    "show_sections": ["workspace"],
+    "sections": {
+      "workspace": {
+        "id": "workspace",
+        "block": "retail-feature-page",
+        "module_id": "ledger",
+        "title": "Customer Ledger",
+        "description": "Search, filter, and prioritize retail customers in one traceable ledger."
+      }
+    }
+  }
+}

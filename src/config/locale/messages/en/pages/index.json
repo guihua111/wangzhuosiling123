@@ -2,9 +2,8 @@
   "page": {
     "show_sections": [
       "hero",
-      "introduce",
-      "benefits",
       "usage",
+      "pain_points",
       "features",
       "stats",
       "faq",
@@ -150,7 +149,7 @@
         "id": "workflow",
         "block": "features-step",
         "label": "Standard workflow",
-        "title": "Move from customer opportunity to follow-up in seven clear steps",
+        "title": "Move from customer opportunity to follow-up in four clear steps",
         "description": "Human review points remain visible throughout, combining AI efficiency with business control.",
         "items": [
           {
@@ -175,61 +174,116 @@
           }
         ]
       },
-      "features": {
-        "id": "features",
-        "block": "features",
-        "title": "Eight core capabilities built for retail relationship managers",
-        "description": "Cover the V1 business workflow, with future integration paths for credit data, core systems, approvals, enterprise messaging, and analytics.",
+      "pain_points": {
+        "id": "pain-points",
+        "block": "retail-pain-points",
+        "label": "Common relationship-manager pain points",
+        "title": "Core pain points",
+        "description": "Scattered information, inconsistent judgment, and repeated document requests consume relationship-manager time while weakening customer experience and conversion.",
         "items": [
           {
-            "title": "Priority customer list",
-            "description": "Identify today's priority customers by business rules and show the recommendation reason and latest follow-up.",
-            "icon": "Rows3",
-            "url": "/workbench?module=ledger"
+            "title": "Information is reconfirmed across stages",
+            "description": "Customer details are spread across interviews, documents, and systems, forcing repeated checks at every handoff.",
+            "icon": "RefreshCw"
           },
           {
-            "title": "Document and statement OCR",
-            "description": "Extract identity, entity, and income fields while flagging low-confidence content for review.",
-            "icon": "ScanLine",
-            "url": "/workbench?module=ocr"
+            "title": "Conversation outcomes are hard to reuse",
+            "description": "Calls, messages, and meeting notes lack a common structure, so each follow-up starts with manual rework.",
+            "icon": "MessagesSquare"
           },
           {
-            "title": "Intelligent interview structuring",
-            "description": "Recognize confirmed needs, customer concerns, and still-unknown information from unstructured notes.",
-            "icon": "FileSearch2",
-            "url": "/workbench?module=interview"
+            "title": "Intent assessment depends on experience",
+            "description": "Needs and buying signals are not consistently marked, making prioritization dependent on individual judgment.",
+            "icon": "BrainCircuit"
+          },
+          {
+            "title": "Product recommendations lack a standard narrative",
+            "description": "Rationale, eligibility, and risk boundaries vary by person, making proposals harder for customers to understand.",
+            "icon": "BadgeHelp"
+          },
+          {
+            "title": "Document requirements are unclear upfront",
+            "description": "Checklists change during the process, creating repeated submissions and slowing the next business step.",
+            "icon": "Files"
+          }
+        ]
+      },
+      "features": {
+        "id": "features",
+        "block": "retail-feature-showcase",
+        "title": "Eight core work modules built for retail relationship managers",
+        "description": "From customer management to post-meeting summaries, eight work modules are presented in the standard outreach sequence.",
+        "items": [
+          {
+            "title": "Customer ledger",
+            "icon": "Rows3"
+          },
+          {
+            "title": "Intelligent interview management",
+            "icon": "FileSearch2"
+          },
+          {
+            "title": "Document & statement OCR",
+            "icon": "ScanLine"
           },
           {
             "title": "Unified customer profile",
-            "description": "Combine customer, internal, external-credit, and current-needs data with field-level traceability.",
-            "icon": "UserRoundCog",
-            "url": "/workbench?module=profile"
+            "icon": "UserRoundCog"
           },
           {
-            "title": "Product-match explanation",
-            "description": "Provide a direction, rationale, and eligibility boundaries without presenting assistance as an approval result.",
-            "icon": "GitCompareArrows",
-            "url": "/workbench?module=matching"
+            "title": "Product matching",
+            "icon": "GitCompareArrows"
           },
           {
-            "title": "Intelligent outreach scripts",
-            "description": "Create editable suggestions for calls, messaging, meetings, and objections, with manager review before use.",
-            "icon": "MessageSquareText",
-            "url": "/workbench?module=scripts"
+            "title": "Intelligent marketing scripts",
+            "icon": "MessageSquareText"
           },
           {
-            "title": "Documents and follow-up management",
-            "description": "Maintain document completeness, contact outcomes, customer feedback, next actions, and reminder dates.",
-            "icon": "FolderClock",
-            "url": "/workbench?module=materials"
+            "title": "Materials & follow-up management",
+            "icon": "FolderClock"
           },
           {
-            "title": "One-click post-meeting package",
-            "description": "Bundle notes, needs, product fit, scripts, documents, and tasks so work continues without losing context.",
-            "icon": "BriefcaseBusiness",
-            "url": "/workbench?module=followup"
+            "title": "One-click summary",
+            "icon": "BriefcaseBusiness"
           }
-        ]
+        ],
+        "showcase": {
+          "label": "Feature preview",
+          "title": "Customer ledger keeps every opportunity in one view",
+          "description": "Review operating data, loan status, last contact, and priority recommendations, then filter the customers who need attention today.",
+          "bullets": [
+            "Search by customer name or industry",
+            "Filter today's priorities, upcoming maturities, and overdue follow-ups",
+            "Keep consent, risk flags, and human review boundaries visible"
+          ],
+          "button": "Open customer ledger",
+          "url": "/workbench/customer-ledger",
+          "preview_title": "Today's customer opportunities",
+          "preview_description": "Sample business data · Open the full workspace to interact",
+          "status": "Data updated",
+          "metrics": [
+            { "value": "30", "label": "Customers to reach" },
+            { "value": "8", "label": "Today's priority" },
+            { "value": "5", "label": "Near maturity" }
+          ],
+          "rows": [
+            {
+              "name": "Lin Fresh Market",
+              "industry": "Community retail",
+              "priority": "High"
+            },
+            {
+              "name": "Voyage Auto Parts",
+              "industry": "Auto services",
+              "priority": "Maturing"
+            },
+            {
+              "name": "Qingchuan Dining",
+              "industry": "Restaurant",
+              "priority": "Follow up"
+            }
+          ]
+        }
       },
       "stats": {
         "id": "value",
@@ -238,12 +292,12 @@
         "description": "The product follows the relationship manager's standard workflow, with visible review and traceability at critical points.",
         "items": [
           {
-            "title": "7 steps",
-            "description": "Across the standard workflow"
+            "title": "30 customers",
+            "description": "Reached and engaged"
           },
           {
-            "title": "1 workspace",
-            "description": "For the complete customer view"
+            "title": "45 solutions",
+            "description": "Designed and prepared"
           },
           {
             "title": "End to end",

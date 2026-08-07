@@ -6,7 +6,7 @@ import { Coins, LayoutDashboard, Loader2, LogOut, User } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 import { authClient, signOut, useSession } from '@/core/auth/client';
-import { Link, useRouter } from '@/core/i18n/navigation';
+import { Link } from '@/core/i18n/navigation';
 import {
   Avatar,
   AvatarFallback,
@@ -43,8 +43,6 @@ export function SignUser({
   userNav?: UserNav;
 }) {
   const t = useTranslations('common.sign');
-  const router = useRouter();
-
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
@@ -231,7 +229,8 @@ export function SignUser({
                   signOut({
                     fetchOptions: {
                       onSuccess: () => {
-                        router.push('/');
+                        setUser(null);
+                        window.location.assign('/');
                       },
                     },
                   })

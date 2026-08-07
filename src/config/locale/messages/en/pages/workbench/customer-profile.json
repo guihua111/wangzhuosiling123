@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "title": "Unified Customer Profile",
+    "description": "Maintain a complete customer view with business data, relationships, and current needs."
+  },
+  "page": {
+    "title": "Unified Customer Profile",
+    "show_sections": ["workspace"],
+    "sections": {
+      "workspace": {
+        "id": "workspace",
+        "block": "retail-feature-page",
+        "module_id": "profile",
+        "title": "Unified Customer Profile",
+        "description": "Maintain a complete customer view with business data, relationships, and current needs."
+      }
+    }
+  }
+}

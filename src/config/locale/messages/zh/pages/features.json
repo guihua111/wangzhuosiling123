@@ -1,0 +1,176 @@
+{
+  "metadata": {
+    "title": "产品能力｜零售信贷展业助手",
+    "description": "面向零售客户经理的客户台账、智能访谈、OCR、客户画像、产品匹配、营销话术、材料跟进和一键总结。"
+  },
+  "page": {
+    "title": "产品能力",
+    "show_sections": ["hero", "usage", "pain_points", "features", "cta"],
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "block": "hero",
+        "announcement": {
+          "title": "零售客户经理的八个核心工作模块",
+          "url": "#features"
+        },
+        "title": "从客户管理到跟进总结，八项能力连接完整展业流程",
+        "highlight_text": "八项能力",
+        "description": "每项能力都有独立、可操作的工作页面。按照标准业务顺序进入功能，减少重复整理，让客户信息和沟通成果持续复用。",
+        "buttons": [
+          {
+            "title": "查看八项能力",
+            "url": "#features",
+            "icon": "LayoutGrid"
+          },
+          {
+            "title": "返回首页",
+            "url": "/",
+            "icon": "ArrowLeft",
+            "variant": "outline"
+          }
+        ],
+        "tip": "点击任一功能入口，即可进入对应的完整工作页面。",
+        "show_avatars": false
+      },
+      "usage": {
+        "id": "workflow",
+        "block": "features-step",
+        "label": "标准工作流程",
+        "title": "从客户机会到跟进闭环，四步清晰推进",
+        "description": "每一步都保留人工确认点，让 AI 提效与业务合规同时成立。",
+        "items": [
+          {
+            "title": "筛选与录入",
+            "description": "筛选重点客户，上传证照流水，并补充访谈纪要。",
+            "icon": "UserRoundSearch"
+          },
+          {
+            "title": "画像与适配",
+            "description": "生成客户画像，核对需求后匹配产品方向和待补条件。",
+            "icon": "ScanSearch"
+          },
+          {
+            "title": "话术与材料",
+            "description": "生成沟通建议和动态材料清单，完成客户经理复核。",
+            "icon": "ClipboardCheck"
+          },
+          {
+            "title": "成果包与跟进",
+            "description": "汇总本次展业成果，创建下一次联系任务并持续更新。",
+            "icon": "PackageCheck"
+          }
+        ]
+      },
+      "pain_points": {
+        "id": "pain-points",
+        "block": "retail-pain-points",
+        "label": "客户经理常见痛点",
+        "title": "核心痛点",
+        "description": "信息分散、判断口径不一和材料反复补充，正在消耗客户经理的沟通时间，也影响客户体验与后续转化。",
+        "items": [
+          {
+            "title": "信息跨环节重复确认",
+            "description": "客户信息散落在访谈、材料和多个系统中，进入下一环节时仍需反复核对。",
+            "icon": "RefreshCw"
+          },
+          {
+            "title": "沟通结果难以直接复用",
+            "description": "电话、微信和面谈纪要缺少统一结构，后续跟进往往需要重新整理。",
+            "icon": "MessagesSquare"
+          },
+          {
+            "title": "客户意向判断依赖经验",
+            "description": "客户需求和成交信号缺少清晰标记，优先级判断容易受个人经验影响。",
+            "icon": "BrainCircuit"
+          },
+          {
+            "title": "产品推荐讲解不够标准化",
+            "description": "推荐依据、适配条件和风险边界表达不统一，客户难以快速理解方案。",
+            "icon": "BadgeHelp"
+          },
+          {
+            "title": "材料要求难以一次明确",
+            "description": "材料清单随沟通反复变化，客户多次补交，拖慢后续业务推进。",
+            "icon": "Files"
+          }
+        ]
+      },
+      "features": {
+        "id": "features",
+        "block": "features",
+        "title": "八项功能，按零售展业顺序清晰衔接",
+        "description": "从客户台账开始，依次完成访谈、材料识别、画像、产品匹配、营销沟通、材料跟进和成果总结。",
+        "items": [
+          {
+            "title": "客户台账",
+            "description": "统一管理并筛选客户，明确今天最需要跟进的业务机会。",
+            "icon": "Rows3",
+            "url": "/workbench/customer-ledger"
+          },
+          {
+            "title": "智能访谈管理",
+            "description": "把沟通记录整理为客户需求、顾虑与待确认事项。",
+            "icon": "FileSearch2",
+            "url": "/workbench/interview-management"
+          },
+          {
+            "title": "证照与流水 OCR",
+            "description": "识别证照与流水字段，对关键结果进行人工确认。",
+            "icon": "ScanLine",
+            "url": "/workbench/document-ocr"
+          },
+          {
+            "title": "统一客户画像",
+            "description": "沉淀客户基础、经营、关系和当前需求信息。",
+            "icon": "UserRoundCog",
+            "url": "/workbench/customer-profile"
+          },
+          {
+            "title": "产品匹配",
+            "description": "给出产品方向、匹配理由以及仍需满足的条件。",
+            "icon": "GitCompareArrows",
+            "url": "/workbench/product-matching"
+          },
+          {
+            "title": "智能营销话术",
+            "description": "按电话、微信和面谈场景生成可编辑沟通建议。",
+            "icon": "MessageSquareText",
+            "url": "/workbench/marketing-scripts"
+          },
+          {
+            "title": "材料与跟进管理",
+            "description": "动态维护材料完整度、客户反馈和下一步任务。",
+            "icon": "FolderClock",
+            "url": "/workbench/materials-followup"
+          },
+          {
+            "title": "一键总结",
+            "description": "汇总需求、匹配、话术、材料与后续行动。",
+            "icon": "BriefcaseBusiness",
+            "url": "/workbench/summary"
+          }
+        ]
+      },
+      "cta": {
+        "id": "cta",
+        "block": "cta",
+        "title": "从客户台账开始，建立完整的展业工作链路",
+        "description": "进入第一个功能，体验从客户筛选到成果总结的完整流程。",
+        "buttons": [
+          {
+            "title": "打开客户台账",
+            "url": "/workbench/customer-ledger",
+            "icon": "ArrowRight"
+          },
+          {
+            "title": "返回首页",
+            "url": "/",
+            "icon": "Home",
+            "variant": "outline"
+          }
+        ]
+      }
+    }
+  }
+}

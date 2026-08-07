@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "title": "Intelligent Interview Management",
+    "description": "Turn interview notes into structured needs, concerns, and follow-up questions."
+  },
+  "page": {
+    "title": "Intelligent Interview Management",
+    "show_sections": ["workspace"],
+    "sections": {
+      "workspace": {
+        "id": "workspace",
+        "block": "retail-feature-page",
+        "module_id": "interview",
+        "title": "Intelligent Interview Management",
+        "description": "Turn interview notes into structured needs, concerns, and follow-up questions."
+      }
+    }
+  }
+}

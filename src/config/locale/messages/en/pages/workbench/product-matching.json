@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "title": "Product Matching",
+    "description": "Match verified customer needs with product directions, reasons, and conditions."
+  },
+  "page": {
+    "title": "Product Matching",
+    "show_sections": ["workspace"],
+    "sections": {
+      "workspace": {
+        "id": "workspace",
+        "block": "retail-feature-page",
+        "module_id": "matching",
+        "title": "Product Matching",
+        "description": "Match verified customer needs with product directions, reasons, and conditions."
+      }
+    }
+  }
+}

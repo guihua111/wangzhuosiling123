@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "title": "Materials & Follow-up Management",
+    "description": "Track document completeness, customer feedback, and next actions together."
+  },
+  "page": {
+    "title": "Materials & Follow-up Management",
+    "show_sections": ["workspace"],
+    "sections": {
+      "workspace": {
+        "id": "workspace",
+        "block": "retail-feature-page",
+        "module_id": "materials",
+        "title": "Materials & Follow-up Management",
+        "description": "Track document completeness, customer feedback, and next actions together."
+      }
+    }
+  }
+}

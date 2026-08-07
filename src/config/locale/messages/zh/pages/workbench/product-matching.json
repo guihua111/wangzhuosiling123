@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "title": "产品匹配",
+    "description": "根据已确认需求给出产品方向、匹配理由与待满足条件。"
+  },
+  "page": {
+    "title": "产品匹配",
+    "show_sections": ["workspace"],
+    "sections": {
+      "workspace": {
+        "id": "workspace",
+        "block": "retail-feature-page",
+        "module_id": "matching",
+        "title": "产品匹配",
+        "description": "根据已确认需求给出产品方向、匹配理由与待满足条件。"
+      }
+    }
+  }
+}

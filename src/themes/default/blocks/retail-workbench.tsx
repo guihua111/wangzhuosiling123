@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowLeft,
   ArrowRight,
@@ -24,6 +24,7 @@ type WorkbenchModule = {
   title: string;
   description: string;
   icon: string;
+  url?: string;
 };
 
 type LedgerRow = {
@@ -45,10 +46,14 @@ type MaterialItem = {
 export function RetailWorkbench({ section }: { section: Section }) {
   const modules = (section.modules ?? []) as WorkbenchModule[];
   const copy = section.copy as any;
-  const [activeId, setActiveId] = useState(modules[0]?.id ?? 'ledger');
+  const [activeId, setActiveId] = useState(
+    (section.default_module as string) ?? modules[0]?.id ?? 'ledger'
+  );
   const [ledgerQuery, setLedgerQuery] = useState('');
   const [ledgerFilter, setLedgerFilter] = useState('all');
   const [ocrReviewed, setOcrReviewed] = useState(false);
+  const [selectedMaterialName, setSelectedMaterialName] = useState('');
+  const materialInputRef = useRef<HTMLInputElement>(null);
   const [interviewText, setInterviewText] = useState(
     copy.interview.sample as string
   );
@@ -70,8 +75,13 @@ export function RetailWorkbench({ section }: { section: Section }) {
     const moduleId = new URL(window.location.href).searchParams.get('module');
     if (moduleId && modules.some((item) => item.id === moduleId)) {
       setActiveId(moduleId);
+    } else if (
+      section.default_module &&
+      modules.some((item) => item.id === section.default_module)
+    ) {
+      setActiveId(section.default_module as string);
     }
-  }, [modules]);
+  }, [modules, section.default_module]);
 
   const activeModule =
     modules.find((item) => item.id === activeId) ?? modules[0];
@@ -86,6 +96,11 @@ export function RetailWorkbench({ section }: { section: Section }) {
       return matchesQuery && matchesFilter;
     });
   }, [copy.ledger.rows, ledgerFilter, ledgerQuery]);
+
+  const ledgerResultCount =
+    ledgerFilter === 'all' && !ledgerQuery.trim()
+      ? Number(copy.ledger.total_count) || ledgerRows.length
+      : ledgerRows.length;
 
   const activateModule = (id: string) => {
     setActiveId(id);
@@ -129,9 +144,9 @@ export function RetailWorkbench({ section }: { section: Section }) {
           ))}
         </div>
       </div>
-      <div className="overflow-x-auto rounded-xl border">
+      <div className="max-h-[620px] overflow-auto rounded-xl border">
         <table className="w-full min-w-[760px] text-left text-sm">
-          <thead className="bg-muted/60 text-muted-foreground text-xs">
+          <thead className="bg-muted text-muted-foreground sticky top-0 z-10 text-xs">
             <tr>
               {copy.ledger.columns.map((column: string) => (
                 <th key={column} className="px-4 py-3 font-medium">
@@ -159,7 +174,10 @@ export function RetailWorkbench({ section }: { section: Section }) {
         </table>
       </div>
       <p className="text-muted-foreground text-xs">
-        {copy.ledger.result_label.replace('{count}', String(ledgerRows.length))}
+        {copy.ledger.result_label.replace(
+          '{count}',
+          String(ledgerResultCount)
+        )}
       </p>
     </div>
   );
@@ -175,11 +193,29 @@ export function RetailWorkbench({ section }: { section: Section }) {
         <p className="text-muted-foreground mt-2 text-sm">
           {copy.ocr.upload_description}
         </p>
-        <Button className="mt-5" onClick={() => setOcrReviewed(false)}>
+        <input
+          ref={materialInputRef}
+          type="file"
+          accept=".pdf,.png,.jpg,.jpeg,.webp,application/pdf,image/png,image/jpeg,image/webp"
+          className="sr-only"
+          onChange={(event) => {
+            const file = event.target.files?.[0];
+            if (!file) return;
+            setSelectedMaterialName(file.name);
+            setOcrReviewed(false);
+          }}
+        />
+        <Button
+          type="button"
+          className="mt-5"
+          onClick={() => materialInputRef.current?.click()}
+        >
           {copy.ocr.select_button}
         </Button>
         <p className="text-muted-foreground mt-3 text-xs">
-          {copy.ocr.demo_file}
+          {selectedMaterialName
+            ? `${copy.ocr.selected_file}: ${selectedMaterialName}`
+            : copy.ocr.file_hint}
         </p>
       </div>
       <div className="rounded-2xl border p-5">
@@ -390,7 +426,7 @@ export function RetailWorkbench({ section }: { section: Section }) {
     </div>
   );
 
-  const renderMaterials = () => {
+  const renderMaterialChecklist = () => {
     const completeCount = materialChecked.size;
     const total = (copy.materials.items as MaterialItem[]).length;
     const progress = Math.round((completeCount / total) * 100);
@@ -515,6 +551,58 @@ export function RetailWorkbench({ section }: { section: Section }) {
     </div>
   );
 
+  const renderMaterials = () => (
+    <div className="space-y-6">
+      {renderMaterialChecklist()}
+      {renderFollowup()}
+    </div>
+  );
+
+  const renderSummary = () => (
+    <div className="space-y-5">
+      <div className="grid gap-3 sm:grid-cols-3">
+        {copy.summary.metrics.map((metric: any) => (
+          <div
+            key={metric.label}
+            className="bg-muted/35 rounded-2xl border p-4"
+          >
+            <div className="text-primary text-2xl font-semibold">
+              {metric.value}
+            </div>
+            <div className="text-muted-foreground mt-1 text-xs">
+              {metric.label}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="grid gap-4 lg:grid-cols-2">
+        {copy.summary.sections.map((item: any) => (
+          <div key={item.title} className="rounded-2xl border p-5">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="size-4 text-emerald-600" />
+              <h3 className="font-semibold">{item.title}</h3>
+            </div>
+            <p className="text-muted-foreground mt-3 text-sm leading-6">
+              {item.content}
+            </p>
+          </div>
+        ))}
+      </div>
+      <div className="flex flex-col justify-between gap-4 rounded-2xl border bg-blue-50/40 p-5 sm:flex-row sm:items-center dark:bg-blue-950/15">
+        <div>
+          <h3 className="font-semibold">{copy.summary.action_title}</h3>
+          <p className="text-muted-foreground mt-1 text-sm">
+            {copy.summary.action_description}
+          </p>
+        </div>
+        <Button onClick={save}>
+          <Sparkles className="size-4" />
+          {copy.summary.action_button}
+        </Button>
+      </div>
+    </div>
+  );
+
   const renderActiveModule = () => {
     switch (activeId) {
       case 'ledger':
@@ -531,8 +619,8 @@ export function RetailWorkbench({ section }: { section: Section }) {
         return renderScripts();
       case 'materials':
         return renderMaterials();
-      case 'followup':
-        return renderFollowup();
+      case 'summary':
+        return renderSummary();
       default:
         return null;
     }
@@ -573,25 +661,38 @@ export function RetailWorkbench({ section }: { section: Section }) {
               {section.module_label}
             </div>
             <div className="grid gap-1 sm:grid-cols-2 lg:grid-cols-1">
-              {modules.map((item) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => activateModule(item.id)}
-                  className={cn(
-                    'group flex items-center gap-3 rounded-xl px-3 py-3 text-left transition-colors',
-                    activeId === item.id
-                      ? 'bg-primary text-primary-foreground'
-                      : 'hover:bg-muted'
-                  )}
-                >
-                  <SmartIcon name={item.icon} className="size-4 shrink-0" />
-                  <span className="min-w-0 flex-1 text-sm font-medium">
-                    {item.title}
-                  </span>
-                  <ArrowRight className="size-3.5 opacity-60" />
-                </button>
-              ))}
+              {modules.map((item) => {
+                const className = cn(
+                  'group flex items-center gap-3 rounded-xl px-3 py-3 text-left transition-colors',
+                  activeId === item.id
+                    ? 'bg-primary text-primary-foreground'
+                    : 'hover:bg-muted'
+                );
+                const content = (
+                  <>
+                    <SmartIcon name={item.icon} className="size-4 shrink-0" />
+                    <span className="min-w-0 flex-1 text-sm font-medium">
+                      {item.title}
+                    </span>
+                    <ArrowRight className="size-3.5 opacity-60" />
+                  </>
+                );
+
+                return item.url ? (
+                  <Link key={item.id} href={item.url} className={className}>
+                    {content}
+                  </Link>
+                ) : (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => activateModule(item.id)}
+                    className={className}
+                  >
+                    {content}
+                  </button>
+                );
+              })}
             </div>
           </aside>
 

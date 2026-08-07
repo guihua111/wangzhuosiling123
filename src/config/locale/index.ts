@@ -55,4 +55,13 @@ export const localeMessagesPaths = [
   'pages/blog',
   'pages/updates',
   'pages/workbench',
+  'pages/workbench/customer-ledger',
+  'pages/workbench/interview-management',
+  'pages/workbench/document-ocr',
+  'pages/workbench/customer-profile',
+  'pages/workbench/product-matching',
+  'pages/workbench/marketing-scripts',
+  'pages/workbench/materials-followup',
+  'pages/workbench/summary',
+  'pages/features',
 ];

@@ -1,0 +1,176 @@
+{
+  "metadata": {
+    "title": "Product Capabilities | Retail Lending Assistant",
+    "description": "Customer ledger, intelligent interviews, OCR, profiles, product matching, marketing scripts, follow-up management, and one-click summaries for retail relationship managers."
+  },
+  "page": {
+    "title": "Product Capabilities",
+    "show_sections": ["hero", "usage", "pain_points", "features", "cta"],
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "block": "hero",
+        "announcement": {
+          "title": "Eight core work modules for retail relationship managers",
+          "url": "#features"
+        },
+        "title": "Eight capabilities connect customer management to follow-up summaries",
+        "highlight_text": "Eight capabilities",
+        "description": "Every capability has an interactive workspace. Follow the standard business sequence to reduce repeated preparation and keep customer information reusable.",
+        "buttons": [
+          {
+            "title": "View all capabilities",
+            "url": "#features",
+            "icon": "LayoutGrid"
+          },
+          {
+            "title": "Back to home",
+            "url": "/",
+            "icon": "ArrowLeft",
+            "variant": "outline"
+          }
+        ],
+        "tip": "Select any capability to open its complete workspace.",
+        "show_avatars": false
+      },
+      "usage": {
+        "id": "workflow",
+        "block": "features-step",
+        "label": "Standard workflow",
+        "title": "Move from customer opportunity to follow-up in four clear steps",
+        "description": "Human review points remain visible throughout, combining AI efficiency with business control.",
+        "items": [
+          {
+            "title": "Screen and capture",
+            "description": "Prioritize customers, upload core documents, and add interview notes.",
+            "icon": "UserRoundSearch"
+          },
+          {
+            "title": "Profile and match",
+            "description": "Build the profile, confirm needs, and identify product directions and open conditions.",
+            "icon": "ScanSearch"
+          },
+          {
+            "title": "Prepare outreach and documents",
+            "description": "Create talking points and a dynamic checklist for relationship-manager review.",
+            "icon": "ClipboardCheck"
+          },
+          {
+            "title": "Package and follow up",
+            "description": "Compile the post-meeting package and schedule the next customer action.",
+            "icon": "PackageCheck"
+          }
+        ]
+      },
+      "pain_points": {
+        "id": "pain-points",
+        "block": "retail-pain-points",
+        "label": "Common relationship-manager pain points",
+        "title": "Core pain points",
+        "description": "Scattered information, inconsistent judgment, and repeated document requests consume relationship-manager time while weakening customer experience and conversion.",
+        "items": [
+          {
+            "title": "Information is reconfirmed across stages",
+            "description": "Customer details are spread across interviews, documents, and systems, forcing repeated checks at every handoff.",
+            "icon": "RefreshCw"
+          },
+          {
+            "title": "Conversation outcomes are hard to reuse",
+            "description": "Calls, messages, and meeting notes lack a common structure, so each follow-up starts with manual rework.",
+            "icon": "MessagesSquare"
+          },
+          {
+            "title": "Intent assessment depends on experience",
+            "description": "Needs and buying signals are not consistently marked, making prioritization dependent on individual judgment.",
+            "icon": "BrainCircuit"
+          },
+          {
+            "title": "Product recommendations lack a standard narrative",
+            "description": "Rationale, eligibility, and risk boundaries vary by person, making proposals harder for customers to understand.",
+            "icon": "BadgeHelp"
+          },
+          {
+            "title": "Document requirements are unclear upfront",
+            "description": "Checklists change during the process, creating repeated submissions and slowing the next business step.",
+            "icon": "Files"
+          }
+        ]
+      },
+      "features": {
+        "id": "features",
+        "block": "features",
+        "title": "Eight capabilities aligned to the retail outreach sequence",
+        "description": "Start with the customer ledger, then move through interviews, document capture, profiling, product matching, outreach, follow-up, and final summaries.",
+        "items": [
+          {
+            "title": "Customer ledger",
+            "description": "Manage and filter customers to identify today's highest-priority opportunities.",
+            "icon": "Rows3",
+            "url": "/workbench/customer-ledger"
+          },
+          {
+            "title": "Intelligent interview management",
+            "description": "Turn conversations into needs, concerns, and open questions.",
+            "icon": "FileSearch2",
+            "url": "/workbench/interview-management"
+          },
+          {
+            "title": "License and statement OCR",
+            "description": "Extract key fields from licenses and statements for human review.",
+            "icon": "ScanLine",
+            "url": "/workbench/document-ocr"
+          },
+          {
+            "title": "Unified customer profile",
+            "description": "Consolidate customer, operating, relationship, and current need data.",
+            "icon": "UserRoundCog",
+            "url": "/workbench/customer-profile"
+          },
+          {
+            "title": "Product matching",
+            "description": "Present product directions, matching rationale, and open conditions.",
+            "icon": "GitCompareArrows",
+            "url": "/workbench/product-matching"
+          },
+          {
+            "title": "Intelligent marketing scripts",
+            "description": "Create editable guidance for calls, messages, and meetings.",
+            "icon": "MessageSquareText",
+            "url": "/workbench/marketing-scripts"
+          },
+          {
+            "title": "Materials and follow-up management",
+            "description": "Track document completeness, feedback, and next actions.",
+            "icon": "FolderClock",
+            "url": "/workbench/materials-followup"
+          },
+          {
+            "title": "One-click summary",
+            "description": "Compile needs, matching, scripts, materials, and follow-up actions.",
+            "icon": "BriefcaseBusiness",
+            "url": "/workbench/summary"
+          }
+        ]
+      },
+      "cta": {
+        "id": "cta",
+        "block": "cta",
+        "title": "Start with the customer ledger and build a complete outreach workflow",
+        "description": "Open the first capability and experience the sequence from customer screening to final summary.",
+        "buttons": [
+          {
+            "title": "Open customer ledger",
+            "url": "/workbench/customer-ledger",
+            "icon": "ArrowRight"
+          },
+          {
+            "title": "Back to home",
+            "url": "/",
+            "icon": "Home",
+            "variant": "outline"
+          }
+        ]
+      }
+    }
+  }
+}

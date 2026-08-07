@@ -85,7 +85,9 @@ export function SignInForm({
             // Do NOT reset loading here; navigation may not have completed yet.
           },
           onSuccess: (ctx) => {
-            // Keep loading=true until navigation completes.
+            // Close the modal implicitly via a full navigation and make every
+            // component read the newly issued session cookie immediately.
+            window.location.assign(callbackUrl || '/');
           },
           onError: (e: any) => {
             const status = e?.error?.status;

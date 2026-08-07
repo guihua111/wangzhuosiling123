@@ -14,7 +14,7 @@
         "title": "展业工作台",
         "description": "选择一个业务模块开始操作。当前版本提供完整的前端业务演示，所有 AI 与授信结果仍须客户经理复核。",
         "demo_notice": "本地演示环境",
-        "module_label": "八项核心能力",
+        "module_label": "八个核心工作模块",
         "modules": [
           {
             "id": "ledger",
@@ -23,20 +23,20 @@
             "icon": "UsersRound"
           },
           {
-            "id": "ocr",
-            "title": "OCR 材料录入",
-            "description": "识别证照和流水字段，对低置信度结果进行人工确认。",
-            "icon": "ScanLine"
-          },
-          {
             "id": "interview",
-            "title": "访谈结构化",
+            "title": "智能访谈管理",
             "description": "将非结构化访谈记录整理为明确需求、顾虑和待确认事项。",
             "icon": "FileSearch2"
           },
           {
+            "id": "ocr",
+            "title": "证照与流水 OCR",
+            "description": "识别证照和流水字段，对低置信度结果进行人工确认。",
+            "icon": "ScanLine"
+          },
+          {
             "id": "profile",
-            "title": "客户画像",
+            "title": "统一客户画像",
             "description": "统一维护客户基础、经营、行内关系、同业授信和当前需求。",
             "icon": "ContactRound"
           },
@@ -54,15 +54,15 @@
           },
           {
             "id": "materials",
-            "title": "材料清单",
-            "description": "维护已获取、系统已有、待确认和缺失材料及完整度。",
-            "icon": "FolderCheck"
+            "title": "材料与跟进管理",
+            "description": "统一维护材料完整度、客户反馈、下一步任务和提醒时间。",
+            "icon": "FolderClock"
           },
           {
-            "id": "followup",
-            "title": "跟进提醒",
-            "description": "记录联系结果、客户反馈和下一步任务，形成连续时间线。",
-            "icon": "CalendarClock"
+            "id": "summary",
+            "title": "一键总结",
+            "description": "汇总访谈、画像、产品匹配、话术、材料和下一步行动。",
+            "icon": "BriefcaseBusiness"
           }
         ],
         "copy": {
@@ -71,6 +71,7 @@
             "saved": "当前操作已保存到本地演示工作台。"
           },
           "ledger": {
+            "total_count": 63,
             "search_placeholder": "搜索客户名称或行业",
             "filters": [
               { "id": "all", "title": "全部客户" },
@@ -89,7 +90,7 @@
             "rows": [
               {
                 "name": "林记生鲜",
-                "industry": "社区零售",
+                "industry": "批发零售业 · 社区零售",
                 "cashflow": "54 万元",
                 "loan": "无",
                 "followup": "38 天前",
@@ -98,7 +99,7 @@
               },
               {
                 "name": "远航汽配",
-                "industry": "汽车服务",
+                "industry": "批发零售业 · 汽车配件",
                 "cashflow": "86 万元",
                 "loan": "45 万元",
                 "followup": "12 天前",
@@ -107,7 +108,7 @@
               },
               {
                 "name": "晴川餐饮",
-                "industry": "餐饮",
+                "industry": "餐饮住宿与居民服务业 · 餐饮",
                 "cashflow": "31 万元",
                 "loan": "无",
                 "followup": "65 天前",
@@ -116,10 +117,82 @@
               },
               {
                 "name": "嘉木家居",
-                "industry": "家居零售",
+                "industry": "批发零售业 · 家居零售",
                 "cashflow": "72 万元",
                 "loan": "20 万元",
                 "followup": "5 天前",
+                "priority": "常规维护",
+                "segment": "all"
+              },
+              {
+                "name": "华盛商贸",
+                "industry": "批发零售业 · 日用百货",
+                "cashflow": "128 万元",
+                "loan": "无",
+                "followup": "18 天前",
+                "priority": "高 · 旺季备货",
+                "segment": "priority"
+              },
+              {
+                "name": "联丰机械",
+                "industry": "制造业 · 通用设备",
+                "cashflow": "205 万元",
+                "loan": "80 万元",
+                "followup": "9 天前",
+                "priority": "高 · 即将到期",
+                "segment": "maturity"
+              },
+              {
+                "name": "启航包装",
+                "industry": "制造业 · 包装材料",
+                "cashflow": "146 万元",
+                "loan": "无",
+                "followup": "47 天前",
+                "priority": "高 · 设备升级",
+                "segment": "priority"
+              },
+              {
+                "name": "云庭酒店",
+                "industry": "餐饮住宿与居民服务业 · 住宿",
+                "cashflow": "93 万元",
+                "loan": "30 万元",
+                "followup": "21 天前",
+                "priority": "中 · 临近到期",
+                "segment": "maturity"
+              },
+              {
+                "name": "悦美生活馆",
+                "industry": "餐饮住宿与居民服务业 · 居民服务",
+                "cashflow": "42 万元",
+                "loan": "无",
+                "followup": "72 天前",
+                "priority": "中 · 久未跟进",
+                "segment": "unfollowed"
+              },
+              {
+                "name": "安达冷链",
+                "industry": "交通运输业 · 冷链物流",
+                "cashflow": "168 万元",
+                "loan": "60 万元",
+                "followup": "15 天前",
+                "priority": "高 · 即将到期",
+                "segment": "maturity"
+              },
+              {
+                "name": "顺成货运",
+                "industry": "交通运输业 · 道路货运",
+                "cashflow": "117 万元",
+                "loan": "无",
+                "followup": "54 天前",
+                "priority": "中 · 久未跟进",
+                "segment": "unfollowed"
+              },
+              {
+                "name": "江海配送",
+                "industry": "交通运输业 · 城市配送",
+                "cashflow": "76 万元",
+                "loan": "25 万元",
+                "followup": "6 天前",
                 "priority": "常规维护",
                 "segment": "all"
               }
@@ -128,9 +201,10 @@
           },
           "ocr": {
             "upload_title": "上传客户材料",
-            "upload_description": "支持身份证、营业执照和银行流水。当前为示例识别，不会上传真实文件。",
-            "select_button": "载入示例材料",
-            "demo_file": "示例：林记生鲜营业执照.pdf",
+            "upload_description": "支持身份证、营业执照和银行流水。选择文件后进入 OCR 识别与人工复核。",
+            "select_button": "上传材料",
+            "selected_file": "已选择",
+            "file_hint": "支持 PDF、PNG、JPG、WebP",
             "result_title": "OCR 识别字段",
             "pending": "等待人工确认",
             "reviewed": "已人工确认",
@@ -271,6 +345,34 @@
               "收集近6个月经营流水",
               "说明首推产品方向和待补条件"
             ]
+          },
+          "summary": {
+            "metrics": [
+              { "value": "86%", "label": "客户画像完整度" },
+              { "value": "92", "label": "首推产品匹配分" },
+              { "value": "3/6", "label": "已完成材料" }
+            ],
+            "sections": [
+              {
+                "title": "客户需求",
+                "content": "旺季备货经营周转50万元，期望期限12个月，重点关注放款速度与还款灵活性。"
+              },
+              {
+                "title": "产品建议",
+                "content": "首推小微经营信用贷，备选房产抵押经营贷；额度、利率和期限以正式审批为准。"
+              },
+              {
+                "title": "待补材料",
+                "content": "补充经营场所证明、贷款用途材料与现有负债说明，并复核近6个月流水完整性。"
+              },
+              {
+                "title": "下一步行动",
+                "content": "联系客户确认抵押意愿，发送材料清单，并在资料齐备后更新产品匹配结果。"
+              }
+            ],
+            "action_title": "生成本次展业成果",
+            "action_description": "保存结构化摘要，供后续沟通、材料收集和跟进执行使用。",
+            "action_button": "生成并保存总结"
           }
         }
       }

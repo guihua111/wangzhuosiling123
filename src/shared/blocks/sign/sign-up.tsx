@@ -140,7 +140,9 @@ export function SignUp({
               return;
             }
 
-            router.push(callbackUrl);
+            // Sign-up creates a session when verification is disabled. Reload
+            // through the destination so the whole UI sees that session.
+            window.location.assign(callbackUrl || '/');
           },
           onError: (e: any) => {
             toast.error(e?.error?.message || 'sign up failed');

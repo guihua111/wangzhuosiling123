@@ -18,7 +18,7 @@
     "ai-saas-development"
   ],
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "tsx scripts/dev.ts",
     "build": "next build",
     "build:fast": "NODE_OPTIONS='--max-old-space-size=4096' next build",
     "start": "next start",

@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "title": "客户台账",
+    "description": "统一管理、筛选并排序零售客户，沉淀可追溯的客户记录。"
+  },
+  "page": {
+    "title": "客户台账",
+    "show_sections": ["workspace"],
+    "sections": {
+      "workspace": {
+        "id": "workspace",
+        "block": "retail-feature-page",
+        "module_id": "ledger",
+        "title": "客户台账",
+        "description": "统一管理、筛选并排序零售客户，沉淀可追溯的客户记录。"
+      }
+    }
+  }
+}

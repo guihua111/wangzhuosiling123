@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "title": "智能营销话术",
+    "description": "生成电话、微信、面谈与异议处理场景的可编辑话术。"
+  },
+  "page": {
+    "title": "智能营销话术",
+    "show_sections": ["workspace"],
+    "sections": {
+      "workspace": {
+        "id": "workspace",
+        "block": "retail-feature-page",
+        "module_id": "scripts",
+        "title": "智能营销话术",
+        "description": "生成电话、微信、面谈与异议处理场景的可编辑话术。"
+      }
+    }
+  }
+}

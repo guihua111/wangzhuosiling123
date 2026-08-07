@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "title": "Intelligent Marketing Scripts",
+    "description": "Create editable scripts for calls, chat, meetings, and objection handling."
+  },
+  "page": {
+    "title": "Intelligent Marketing Scripts",
+    "show_sections": ["workspace"],
+    "sections": {
+      "workspace": {
+        "id": "workspace",
+        "block": "retail-feature-page",
+        "module_id": "scripts",
+        "title": "Intelligent Marketing Scripts",
+        "description": "Create editable scripts for calls, chat, meetings, and objection handling."
+      }
+    }
+  }
+}
