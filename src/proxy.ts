@@ -19,11 +19,12 @@ export async function proxy(request: NextRequest) {
     ? pathname.slice(locale.length + 1)
     : pathname;
 
-  // Only check authentication for admin routes
+  // Protect private dashboards and the retail workspace.
   if (
     pathWithoutLocale.startsWith('/admin') ||
     pathWithoutLocale.startsWith('/settings') ||
-    pathWithoutLocale.startsWith('/activity')
+    pathWithoutLocale.startsWith('/activity') ||
+    pathWithoutLocale.startsWith('/workbench')
   ) {
     // Check if session cookie exists
     const sessionCookie = getSessionCookie(request);
@@ -56,6 +57,7 @@ export async function proxy(request: NextRequest) {
     !pathWithoutLocale.startsWith('/admin') &&
     !pathWithoutLocale.startsWith('/settings') &&
     !pathWithoutLocale.startsWith('/activity') &&
+    !pathWithoutLocale.startsWith('/workbench') &&
     !pathWithoutLocale.startsWith('/sign-') &&
     !pathWithoutLocale.startsWith('/auth')
   ) {

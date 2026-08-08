@@ -29,6 +29,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .codex-dev*.log
+.codex-preview*.log
 .pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)
@@ -66,3 +67,7 @@ src/config/db/migrations*
 .source
 
 .chats
+
+# FinReach database migrations are part of the deployable application.
+!src/config/db/migrations/
+!src/config/db/migrations/**

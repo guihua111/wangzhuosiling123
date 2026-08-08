@@ -88,16 +88,29 @@ export async function getUserCredits(userId: string) {
 }
 
 export async function getSignUser() {
-  const auth = await getAuth();
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+  try {
+    const auth = await getAuth();
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
 
-  return session?.user;
+    return session?.user || null;
+  } catch (error) {
+    // Session lookup can fail when a stale cookie is present or the database is
+    // temporarily unavailable. Authentication must fail closed without taking
+    // down public pages or exposing protected workspace content.
+    console.error(
+      'get session failed:',
+      error instanceof Error ? error.message : error
+    );
+    return null;
+  }
 }
 
 export async function isEmailVerified(email: string): Promise<boolean> {
-  const normalized = String(email || '').trim().toLowerCase();
+  const normalized = String(email || '')
+    .trim()
+    .toLowerCase();
   if (!normalized) return false;
 
   const [row] = await db()

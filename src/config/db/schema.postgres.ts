@@ -6,6 +6,7 @@ import {
   pgTable,
   text,
   timestamp,
+  uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
 import { envConfigs } from '@/config';
@@ -114,6 +115,161 @@ export const verification = table(
   (table) => [
     // Find verification code by identifier (e.g., find code by email)
     index('idx_verification_identifier').on(table.identifier),
+  ]
+);
+
+// Retail workspace tenancy. Every user belongs to one team. Customers are
+// visible to the whole team but can only be changed by their single owner.
+export const retailTeam = table(
+  'retail_team',
+  {
+    id: text('id').primaryKey(),
+    name: text('name').notNull(),
+    ownerUserId: text('owner_user_id')
+      .notNull()
+      .references(() => user.id, { onDelete: 'restrict' }),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+    updatedAt: timestamp('updated_at')
+      .defaultNow()
+      .$onUpdate(() => /* @__PURE__ */ new Date())
+      .notNull(),
+  },
+  (table) => [index('idx_retail_team_owner').on(table.ownerUserId)]
+);
+
+export const retailTeamMember = table(
+  'retail_team_member',
+  {
+    id: text('id').primaryKey(),
+    teamId: text('team_id')
+      .notNull()
+      .references(() => retailTeam.id, { onDelete: 'cascade' }),
+    userId: text('user_id')
+      .notNull()
+      .references(() => user.id, { onDelete: 'cascade' }),
+    role: text('role').notNull().default('member'),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+  },
+  (table) => [
+    uniqueIndex('uidx_retail_team_member_user').on(table.userId),
+    uniqueIndex('uidx_retail_team_member_team_user').on(
+      table.teamId,
+      table.userId
+    ),
+    index('idx_retail_team_member_team').on(table.teamId),
+  ]
+);
+
+export const retailCustomer = table(
+  'retail_customer',
+  {
+    id: text('id').primaryKey(),
+    teamId: text('team_id')
+      .notNull()
+      .references(() => retailTeam.id, { onDelete: 'cascade' }),
+    ownerUserId: text('owner_user_id')
+      .notNull()
+      .references(() => user.id, { onDelete: 'restrict' }),
+    contactName: text('contact_name').notNull(),
+    enterpriseName: text('enterprise_name').notNull().default(''),
+    industry: text('industry').notNull(),
+    cashflow: text('cashflow').notNull().default(''),
+    loan: text('loan').notNull().default(''),
+    followup: text('followup').notNull().default(''),
+    priority: text('priority').notNull().default(''),
+    segment: text('segment').notNull().default('all'),
+    status: text('status').notNull().default('active'),
+    notes: text('notes').notNull().default(''),
+    version: integer('version').notNull().default(1),
+    createdBy: text('created_by')
+      .notNull()
+      .references(() => user.id, { onDelete: 'restrict' }),
+    updatedBy: text('updated_by')
+      .notNull()
+      .references(() => user.id, { onDelete: 'restrict' }),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+    updatedAt: timestamp('updated_at')
+      .defaultNow()
+      .$onUpdate(() => /* @__PURE__ */ new Date())
+      .notNull(),
+    deletedAt: timestamp('deleted_at'),
+  },
+  (table) => [
+    index('idx_retail_customer_team_status').on(table.teamId, table.status),
+    index('idx_retail_customer_team_owner').on(table.teamId, table.ownerUserId),
+    index('idx_retail_customer_team_created').on(table.teamId, table.createdAt),
+  ]
+);
+
+export const retailCustomerAuditLog = table(
+  'retail_customer_audit_log',
+  {
+    id: text('id').primaryKey(),
+    teamId: text('team_id')
+      .notNull()
+      .references(() => retailTeam.id, { onDelete: 'cascade' }),
+    customerId: text('customer_id')
+      .notNull()
+      .references(() => retailCustomer.id, { onDelete: 'cascade' }),
+    userId: text('user_id')
+      .notNull()
+      .references(() => user.id, { onDelete: 'restrict' }),
+    action: text('action').notNull(),
+    payload: text('payload').notNull().default('{}'),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+  },
+  (table) => [
+    index('idx_retail_customer_audit_customer').on(
+      table.customerId,
+      table.createdAt
+    ),
+    index('idx_retail_customer_audit_team').on(table.teamId, table.createdAt),
+  ]
+);
+
+// A single customer-level business case stores the seven downstream work
+// modules. JSON payloads are kept as text so the phase-two schema remains
+// portable across the existing Drizzle setup while all writes still receive
+// validation and optimistic locking in the API layer.
+export const retailCustomerCase = table(
+  'retail_customer_case',
+  {
+    id: text('id').primaryKey(),
+    teamId: text('team_id')
+      .notNull()
+      .references(() => retailTeam.id, { onDelete: 'cascade' }),
+    customerId: text('customer_id')
+      .notNull()
+      .references(() => retailCustomer.id, { onDelete: 'cascade' }),
+    ownerUserId: text('owner_user_id')
+      .notNull()
+      .references(() => user.id, { onDelete: 'restrict' }),
+    interviewNotes: text('interview_notes').notNull().default(''),
+    interviewStructured: text('interview_structured').notNull().default('[]'),
+    documentData: text('document_data').notNull().default('{}'),
+    profileData: text('profile_data').notNull().default('{}'),
+    productMatches: text('product_matches').notNull().default('[]'),
+    marketingScripts: text('marketing_scripts').notNull().default('[]'),
+    materialsData: text('materials_data').notNull().default('{}'),
+    summaryData: text('summary_data').notNull().default('{}'),
+    ruleVersion: text('rule_version').notNull().default('2026-08-08-v1'),
+    version: integer('version').notNull().default(1),
+    createdBy: text('created_by')
+      .notNull()
+      .references(() => user.id, { onDelete: 'restrict' }),
+    updatedBy: text('updated_by')
+      .notNull()
+      .references(() => user.id, { onDelete: 'restrict' }),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+    updatedAt: timestamp('updated_at')
+      .defaultNow()
+      .$onUpdate(() => /* @__PURE__ */ new Date())
+      .notNull(),
+  },
+  (table) => [
+    uniqueIndex('uidx_retail_customer_case_customer').on(table.customerId),
+    index('idx_retail_customer_case_team').on(table.teamId, table.updatedAt),
+    index('idx_retail_customer_case_owner').on(table.ownerUserId),
   ]
 );
 

@@ -5,6 +5,7 @@ import { getLocale } from 'next-intl/server';
 import { db } from '@/core/db';
 import { envConfigs } from '@/config';
 import * as schema from '@/config/db/schema';
+import { ResetPasswordEmail } from '@/shared/blocks/email/reset-password';
 import { VerifyEmail } from '@/shared/blocks/email/verify-email';
 import {
   getCookieFromCtx,
@@ -152,6 +153,29 @@ export async function getAuthOptions(configs: Record<string, string>) {
       requireEmailVerification: emailVerificationEnabled,
       // Avoid creating a session immediately after sign up when verification is required.
       autoSignIn: emailVerificationEnabled ? false : true,
+      resetPasswordTokenExpiresIn: 60 * 60,
+      ...(configs.resend_api_key
+        ? {
+            sendResetPassword: async ({
+              user,
+              url,
+            }: {
+              user: any;
+              url: string;
+              token: string;
+            }) => {
+              const emailService = await getEmailService(configs as any);
+              await emailService.sendEmail({
+                to: user.email,
+                subject: `重置密码 - ${envConfigs.app_name}`,
+                react: ResetPasswordEmail({
+                  appName: envConfigs.app_name,
+                  url,
+                }),
+              });
+            },
+          }
+        : {}),
     },
     ...(emailVerificationEnabled
       ? {

@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Unified Customer Profile",
-    "description": "Maintain a complete customer view with business data, relationships, and current needs."
+    "description": "Maintain a complete customer view with business data, relationships, property, and social insurance."
   },
   "page": {
     "title": "Unified Customer Profile",
@@ -12,7 +12,7 @@
         "block": "retail-feature-page",
         "module_id": "profile",
         "title": "Unified Customer Profile",
-        "description": "Maintain a complete customer view with business data, relationships, and current needs."
+        "description": "Maintain a complete customer view with business data, relationships, property, and social insurance."
       }
     }
   }

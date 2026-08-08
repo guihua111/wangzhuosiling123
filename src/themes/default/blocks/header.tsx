@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
-import { Link, usePathname } from '@/core/i18n/navigation';
+import { authClient } from '@/core/auth/client';
+import { Link, usePathname, useRouter } from '@/core/i18n/navigation';
 import {
   BrandLogo,
   LocaleSelector,
@@ -50,6 +51,23 @@ export function Header({ header }: { header: HeaderType }) {
   const scrollRafRef = useRef<number | null>(null);
   const isLarge = useMedia('(min-width: 64rem)');
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleProtectedNavigation = async (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    url?: string
+  ) => {
+    if (!url?.startsWith('/workbench')) return;
+
+    event.preventDefault();
+    const signInUrl = `/sign-in?callbackUrl=${encodeURIComponent(url)}`;
+    try {
+      const result = await authClient.getSession();
+      router.push(result.data?.user ? url : signInUrl);
+    } catch {
+      router.push(signInUrl);
+    }
+  };
 
   useEffect(() => {
     // Listen to scroll event to enable header styles on scroll
@@ -94,6 +112,9 @@ export function Header({ header }: { header: HeaderType }) {
                   <Link
                     href={item.url || ''}
                     target={item.target || '_self'}
+                    onClick={(event) =>
+                      void handleProtectedNavigation(event, item.url)
+                    }
                     className={`flex flex-row items-center gap-2 px-4 py-1.5 text-sm ${
                       item.is_active || pathname.endsWith(item.url as string)
                         ? 'bg-muted/40 text-muted-foreground'
@@ -193,7 +214,10 @@ export function Header({ header }: { header: HeaderType }) {
                 ) : (
                   <Link
                     href={item.url || ''}
-                    onClick={closeMenu}
+                    onClick={(event) => {
+                      closeMenu();
+                      void handleProtectedNavigation(event, item.url);
+                    }}
                     className="data-[state=open]:bg-muted flex items-center justify-between px-4 py-3 text-lg **:!font-normal"
                   >
                     {item.title}
@@ -227,6 +251,7 @@ export function Header({ header }: { header: HeaderType }) {
           <Link
             href={href}
             target={target || '_self'}
+            onClick={(event) => void handleProtectedNavigation(event, href)}
             className="grid grid-cols-[auto_1fr] gap-3.5"
           >
             <div className="bg-background ring-foreground/10 relative flex size-9 items-center justify-center rounded border border-transparent shadow-sm ring-1">
@@ -294,6 +319,9 @@ export function Header({ header }: { header: HeaderType }) {
                         key={idx}
                         href={button.url || ''}
                         target={button.target || '_self'}
+                        onClick={(event) =>
+                          void handleProtectedNavigation(event, button.url)
+                        }
                         className={cn(
                           'focus-visible:ring-ring inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-colors focus-visible:ring-1 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50',
                           'h-7 px-3 ring-0',

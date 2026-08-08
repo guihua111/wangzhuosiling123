@@ -12,8 +12,8 @@
         "back_title": "Back to home",
         "eyebrow": "Retail Lending Business Assistant",
         "title": "Business Workbench",
-        "description": "Choose a module and start working. This version provides an interactive front-end demonstration; AI and credit outputs still require manager review.",
-        "demo_notice": "Local demo environment",
+        "description": "Select a customer and maintain interviews, profiles, product directions, materials, and summaries through the workflow. Fixed-rule results still require review.",
+        "demo_notice": "Business data is securely saved",
         "module_label": "Eight core work modules",
         "modules": [
           {
@@ -37,7 +37,7 @@
           {
             "id": "profile",
             "title": "Unified customer profile",
-            "description": "Maintain customer, business, bank relationship, external credit, and current-needs data.",
+            "description": "Maintain customer, business, bank relationship, property, and social insurance data.",
             "icon": "ContactRound"
           },
           {
@@ -68,10 +68,59 @@
         "copy": {
           "shared": {
             "save": "Save current result",
-            "saved": "The current operation was saved in the local demo workspace."
+            "saved": "The current operation was saved to the customer business file.",
+            "current_customer": "Current customer",
+            "select_customer": "Select and confirm a customer in the customer ledger first.",
+            "owner_only": "Only the customer owner can update business information."
           },
           "ledger": {
             "total_count": 63,
+            "action_hint": "Add one customer, import a CSV list, or export the current filtered results.",
+            "add_button": "Add ledger entry",
+            "import_button": "Import",
+            "export_button": "Export",
+            "selected_label": "Selected customer",
+            "selection_hint": "Select a customer and confirm your choice.",
+            "interview_button": "Confirm",
+            "confirm_success": "{name} is now the current customer across the other seven work modules.",
+            "select_column": "Select",
+            "customer_number": "Customer ID",
+            "select_customer": "Select customer",
+            "form_title": "Add customer ledger entry",
+            "edit_form_title": "Edit customer ledger entry",
+            "form_hint": "Customer name and industry are required",
+            "form": {
+              "name": "Customer name",
+              "industry": "Industry",
+              "cashflow": "Monthly cash flow",
+              "loan": "Current loan",
+              "followup": "Last follow-up",
+              "priority": "Priority",
+              "segment": "Filter category"
+            },
+            "segment_options": [
+              { "id": "all", "title": "Routine customer" },
+              { "id": "priority", "title": "Today's priority" },
+              { "id": "maturity", "title": "Near maturity" },
+              { "id": "unfollowed", "title": "No recent follow-up" }
+            ],
+            "cancel_button": "Cancel",
+            "save_button": "Save to ledger",
+            "update_button": "Save changes",
+            "entry_success": "The new customer was added to the current ledger.",
+            "update_success": "The customer record was updated.",
+            "delete_success": "The customer record was deleted.",
+            "delete_confirm": "Delete this customer? It will no longer appear in the ledger.",
+            "actions": "Actions",
+            "edit_button": "Edit",
+            "delete_button": "Delete",
+            "owner_only": "Only the assigned owner can perform this action",
+            "import_success": "Imported {count} customers successfully.",
+            "import_error": "Import failed. Use the CSV format exported by this page.",
+            "request_error": "Customer data could not be loaded. Please try again.",
+            "export_success": "The current filtered results were exported.",
+            "export_filename": "customer-ledger.csv",
+            "segment_column": "Filter category",
             "search_placeholder": "Search customer or industry",
             "filters": [
               { "id": "all", "title": "All customers" },
@@ -80,7 +129,7 @@
               { "id": "unfollowed", "title": "No recent follow-up" }
             ],
             "columns": [
-              "Customer",
+              "Customer name",
               "Industry",
               "Monthly cash flow",
               "Current loan",
@@ -89,7 +138,7 @@
             ],
             "rows": [
               {
-                "name": "Lin Fresh Market",
+                "name": "Lin Xiaofeng",
                 "industry": "Wholesale & retail · Neighborhood retail",
                 "cashflow": "RMB 540k",
                 "loan": "None",
@@ -98,7 +147,7 @@
                 "segment": "priority"
               },
               {
-                "name": "Voyage Auto Parts",
+                "name": "Zhang Yuanhang",
                 "industry": "Wholesale & retail · Auto parts",
                 "cashflow": "RMB 860k",
                 "loan": "RMB 450k",
@@ -107,7 +156,7 @@
                 "segment": "maturity"
               },
               {
-                "name": "Clearwater Dining",
+                "name": "Chen Yuqing",
                 "industry": "Hospitality & resident services · Dining",
                 "cashflow": "RMB 310k",
                 "loan": "None",
@@ -116,7 +165,7 @@
                 "segment": "unfollowed"
               },
               {
-                "name": "Jiamu Home",
+                "name": "Li Jiamu",
                 "industry": "Wholesale & retail · Home retail",
                 "cashflow": "RMB 720k",
                 "loan": "RMB 200k",
@@ -125,7 +174,7 @@
                 "segment": "all"
               },
               {
-                "name": "Huasheng Trading",
+                "name": "Wang Huasheng",
                 "industry": "Wholesale & retail · General merchandise",
                 "cashflow": "RMB 1.28m",
                 "loan": "None",
@@ -134,7 +183,7 @@
                 "segment": "priority"
               },
               {
-                "name": "Lianfeng Machinery",
+                "name": "Zhao Yongfeng",
                 "industry": "Manufacturing · General equipment",
                 "cashflow": "RMB 2.05m",
                 "loan": "RMB 800k",
@@ -143,7 +192,7 @@
                 "segment": "maturity"
               },
               {
-                "name": "Qihang Packaging",
+                "name": "Zhou Qihang",
                 "industry": "Manufacturing · Packaging materials",
                 "cashflow": "RMB 1.46m",
                 "loan": "None",
@@ -152,7 +201,7 @@
                 "segment": "priority"
               },
               {
-                "name": "Yunting Hotel",
+                "name": "Wu Yunting",
                 "industry": "Hospitality & resident services · Lodging",
                 "cashflow": "RMB 930k",
                 "loan": "RMB 300k",
@@ -161,7 +210,7 @@
                 "segment": "maturity"
               },
               {
-                "name": "Yuemei Lifestyle",
+                "name": "Zheng Xinyue",
                 "industry": "Hospitality & resident services · Personal services",
                 "cashflow": "RMB 420k",
                 "loan": "None",
@@ -170,7 +219,7 @@
                 "segment": "unfollowed"
               },
               {
-                "name": "Anda Cold Chain",
+                "name": "Sun Hongda",
                 "industry": "Transportation · Cold-chain logistics",
                 "cashflow": "RMB 1.68m",
                 "loan": "RMB 600k",
@@ -179,7 +228,7 @@
                 "segment": "maturity"
               },
               {
-                "name": "Shuncheng Freight",
+                "name": "Ma Zhicheng",
                 "industry": "Transportation · Road freight",
                 "cashflow": "RMB 1.17m",
                 "loan": "None",
@@ -188,7 +237,7 @@
                 "segment": "unfollowed"
               },
               {
-                "name": "Jianghai Delivery",
+                "name": "He Jianghai",
                 "industry": "Transportation · Urban delivery",
                 "cashflow": "RMB 760k",
                 "loan": "RMB 250k",
@@ -201,14 +250,15 @@
           },
           "ocr": {
             "upload_title": "Add customer documents",
-            "upload_description": "Identity documents, business licenses, and bank statements are supported. Select a file for OCR and manager review.",
+            "upload_description": "This phase records the selected file name and uses manual field entry and review; OCR is not performed yet.",
             "select_button": "Upload materials",
             "selected_file": "Selected",
             "file_hint": "PDF, PNG, JPG, and WebP supported",
             "result_title": "OCR-extracted fields",
-            "pending": "Pending manager review",
+            "pending": "Pending manual entry and review",
             "reviewed": "Manager reviewed",
             "confirm_button": "Confirm extracted fields",
+            "sync_saved": "The reviewed fields were saved and synchronized to the customer profile.",
             "fields": [
               { "label": "Business name", "value": "Lin Fresh Market" },
               { "label": "Registration number", "value": "91320100MA2XXXXXXX" },
@@ -222,6 +272,7 @@
             ]
           },
           "interview": {
+            "selected_customer": "Current interview customer",
             "input_title": "Interview notes or call summary",
             "sample": "The customer runs a neighborhood grocery store with daily revenue of about RMB 18,000. They seek RMB 500,000 for peak-season inventory over 12 months. The customer owns a home, has not confirmed collateral preference, and cares about speed and flexible repayment.",
             "action": "Structure interview notes",
@@ -249,7 +300,7 @@
           "profile": {
             "form_title": "Customer and business information",
             "fields": [
-              { "label": "Customer", "value": "Lin Fresh Market" },
+              { "label": "Business name", "value": "Lin Fresh Market" },
               { "label": "Years operating", "value": "7 years" },
               { "label": "Industry", "value": "Neighborhood grocery retail" },
               { "label": "Monthly cash flow", "value": "About RMB 540,000" },
@@ -257,10 +308,9 @@
                 "label": "Bank relationship",
                 "value": "Settlement customer, no loan"
               },
-              {
-                "label": "Current need",
-                "value": "RMB 500,000 working capital"
-              }
+              { "label": "Age", "value": "38" },
+              { "label": "Property", "value": "Owns one residential property" },
+              { "label": "Social insurance", "value": "72 consecutive months" }
             ],
             "summary_title": "Profile completeness",
             "completeness": "86%",
@@ -278,7 +328,7 @@
             "products": [
               {
                 "label": "Primary direction",
-                "title": "Small-business unsecured facility",
+                "title": "Unsecured business loan",
                 "score": "92",
                 "reason": "Stable cash flow, a good settlement relationship, and no current business loan support priority assessment of an unsecured direction.",
                 "condition": "Complete six-month statements, credit authorization, and current liability details are still required."
@@ -377,7 +427,7 @@
               },
               {
                 "title": "Product direction",
-                "content": "Primary: micro-business unsecured loan. Alternative: property-secured business loan. Final terms remain subject to approval."
+                "content": "Primary: unsecured business loan. Alternative: property-secured business loan. Final terms remain subject to approval."
               },
               {
                 "title": "Missing materials",

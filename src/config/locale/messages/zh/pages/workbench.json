@@ -12,8 +12,8 @@
         "back_title": "返回首页",
         "eyebrow": "零售信贷展业助手",
         "title": "展业工作台",
-        "description": "选择一个业务模块开始操作。当前版本提供完整的前端业务演示，所有 AI 与授信结果仍须客户经理复核。",
-        "demo_notice": "本地演示环境",
+        "description": "选择客户后按业务流程维护访谈、画像、产品方向、材料和总结；固定规则结果仍须客户经理复核。",
+        "demo_notice": "业务数据已安全保存",
         "module_label": "八个核心工作模块",
         "modules": [
           {
@@ -37,7 +37,7 @@
           {
             "id": "profile",
             "title": "统一客户画像",
-            "description": "统一维护客户基础、经营、行内关系、同业授信和当前需求。",
+            "description": "统一维护客户基础、经营、行内关系、房产和社保信息。",
             "icon": "ContactRound"
           },
           {
@@ -68,10 +68,59 @@
         "copy": {
           "shared": {
             "save": "保存当前结果",
-            "saved": "当前操作已保存到本地演示工作台。"
+            "saved": "当前操作已保存到客户业务档案。",
+            "current_customer": "当前客户",
+            "select_customer": "请先在客户台账中选择并确定一位客户。",
+            "owner_only": "只有该客户的负责人可以修改业务资料。"
           },
           "ledger": {
             "total_count": 63,
+            "action_hint": "新增单个客户，或通过 CSV 批量导入并导出当前筛选结果。",
+            "add_button": "录入台账",
+            "import_button": "导入",
+            "export_button": "导出",
+            "selected_label": "已选择客户",
+            "selection_hint": "请选择一位客户并点击确定。",
+            "interview_button": "确定",
+            "confirm_success": "已将 {name} 设为当前客户，其他七个工作模块已同步。",
+            "select_column": "选择",
+            "customer_number": "客户编号",
+            "select_customer": "选择客户",
+            "form_title": "录入客户台账",
+            "edit_form_title": "编辑客户台账",
+            "form_hint": "客户名称和行业为必填项",
+            "form": {
+              "name": "客户姓名",
+              "industry": "所属行业",
+              "cashflow": "月均流水",
+              "loan": "本行贷款",
+              "followup": "最近跟进",
+              "priority": "建议优先级",
+              "segment": "筛选类别"
+            },
+            "segment_options": [
+              { "id": "all", "title": "常规客户" },
+              { "id": "priority", "title": "今日优先" },
+              { "id": "maturity", "title": "临近到期" },
+              { "id": "unfollowed", "title": "久未跟进" }
+            ],
+            "cancel_button": "取消",
+            "save_button": "保存并加入台账",
+            "update_button": "保存修改",
+            "entry_success": "新客户已加入当前台账。",
+            "update_success": "客户资料已更新。",
+            "delete_success": "客户资料已删除。",
+            "delete_confirm": "确定删除该客户吗？删除后无法在台账中查看。",
+            "actions": "操作",
+            "edit_button": "编辑",
+            "delete_button": "删除",
+            "owner_only": "只有该客户的负责人可以操作",
+            "import_success": "已成功导入 {count} 位客户。",
+            "import_error": "导入失败，请使用本页面导出的 CSV 格式。",
+            "request_error": "客户数据暂时无法加载，请稍后重试。",
+            "export_success": "当前筛选结果已导出。",
+            "export_filename": "客户台账.csv",
+            "segment_column": "筛选类别",
             "search_placeholder": "搜索客户名称或行业",
             "filters": [
               { "id": "all", "title": "全部客户" },
@@ -80,7 +129,7 @@
               { "id": "unfollowed", "title": "久未跟进" }
             ],
             "columns": [
-              "客户",
+              "客户姓名",
               "行业",
               "月均流水",
               "本行贷款",
@@ -89,7 +138,7 @@
             ],
             "rows": [
               {
-                "name": "林记生鲜",
+                "name": "林晓峰",
                 "industry": "批发零售业 · 社区零售",
                 "cashflow": "54 万元",
                 "loan": "无",
@@ -98,7 +147,7 @@
                 "segment": "priority"
               },
               {
-                "name": "远航汽配",
+                "name": "张远航",
                 "industry": "批发零售业 · 汽车配件",
                 "cashflow": "86 万元",
                 "loan": "45 万元",
@@ -107,7 +156,7 @@
                 "segment": "maturity"
               },
               {
-                "name": "晴川餐饮",
+                "name": "陈雨晴",
                 "industry": "餐饮住宿与居民服务业 · 餐饮",
                 "cashflow": "31 万元",
                 "loan": "无",
@@ -116,7 +165,7 @@
                 "segment": "unfollowed"
               },
               {
-                "name": "嘉木家居",
+                "name": "李嘉木",
                 "industry": "批发零售业 · 家居零售",
                 "cashflow": "72 万元",
                 "loan": "20 万元",
@@ -125,7 +174,7 @@
                 "segment": "all"
               },
               {
-                "name": "华盛商贸",
+                "name": "王华盛",
                 "industry": "批发零售业 · 日用百货",
                 "cashflow": "128 万元",
                 "loan": "无",
@@ -134,7 +183,7 @@
                 "segment": "priority"
               },
               {
-                "name": "联丰机械",
+                "name": "赵永丰",
                 "industry": "制造业 · 通用设备",
                 "cashflow": "205 万元",
                 "loan": "80 万元",
@@ -143,7 +192,7 @@
                 "segment": "maturity"
               },
               {
-                "name": "启航包装",
+                "name": "周启航",
                 "industry": "制造业 · 包装材料",
                 "cashflow": "146 万元",
                 "loan": "无",
@@ -152,7 +201,7 @@
                 "segment": "priority"
               },
               {
-                "name": "云庭酒店",
+                "name": "吴云庭",
                 "industry": "餐饮住宿与居民服务业 · 住宿",
                 "cashflow": "93 万元",
                 "loan": "30 万元",
@@ -161,7 +210,7 @@
                 "segment": "maturity"
               },
               {
-                "name": "悦美生活馆",
+                "name": "郑欣悦",
                 "industry": "餐饮住宿与居民服务业 · 居民服务",
                 "cashflow": "42 万元",
                 "loan": "无",
@@ -170,7 +219,7 @@
                 "segment": "unfollowed"
               },
               {
-                "name": "安达冷链",
+                "name": "孙宏达",
                 "industry": "交通运输业 · 冷链物流",
                 "cashflow": "168 万元",
                 "loan": "60 万元",
@@ -179,7 +228,7 @@
                 "segment": "maturity"
               },
               {
-                "name": "顺成货运",
+                "name": "马志成",
                 "industry": "交通运输业 · 道路货运",
                 "cashflow": "117 万元",
                 "loan": "无",
@@ -188,7 +237,7 @@
                 "segment": "unfollowed"
               },
               {
-                "name": "江海配送",
+                "name": "何江海",
                 "industry": "交通运输业 · 城市配送",
                 "cashflow": "76 万元",
                 "loan": "25 万元",
@@ -201,14 +250,15 @@
           },
           "ocr": {
             "upload_title": "上传客户材料",
-            "upload_description": "支持身份证、营业执照和银行流水。选择文件后进入 OCR 识别与人工复核。",
+            "upload_description": "本阶段登记身份证、营业执照和银行流水文件名，并由客户经理人工录入和复核字段；暂不执行 OCR。",
             "select_button": "上传材料",
             "selected_file": "已选择",
             "file_hint": "支持 PDF、PNG、JPG、WebP",
             "result_title": "OCR 识别字段",
-            "pending": "等待人工确认",
+            "pending": "等待人工录入确认",
             "reviewed": "已人工确认",
             "confirm_button": "确认识别结果",
+            "sync_saved": "识别结果已保存，并同步到统一客户画像。",
             "fields": [
               { "label": "企业名称", "value": "林记生鲜店" },
               { "label": "统一社会信用代码", "value": "91320100MA2XXXXXXX" },
@@ -219,6 +269,7 @@
             ]
           },
           "interview": {
+            "selected_customer": "当前访谈客户",
             "input_title": "访谈纪要或电话摘要",
             "sample": "客户经营一家社区生鲜店，日均流水约1.8万元，希望申请50万元用于旺季备货，期限12个月。名下有住房，暂未确认是否愿意抵押，比较关注放款速度和还款灵活性。",
             "action": "生成结构化纪要",
@@ -237,12 +288,14 @@
           "profile": {
             "form_title": "客户基础与经营信息",
             "fields": [
-              { "label": "客户名称", "value": "林记生鲜店" },
+              { "label": "企业名称", "value": "林记生鲜店" },
               { "label": "经营年限", "value": "7 年" },
               { "label": "所在行业", "value": "社区生鲜零售" },
               { "label": "月均流水", "value": "约 54 万元" },
               { "label": "本行关系", "value": "结算客户，无贷款" },
-              { "label": "当前需求", "value": "50 万元经营周转" }
+              { "label": "年龄", "value": "38 岁" },
+              { "label": "房产信息", "value": "名下有住房 1 套" },
+              { "label": "社保信息", "value": "连续缴纳 72 个月" }
             ],
             "summary_title": "画像完整度",
             "completeness": "86%",
@@ -260,7 +313,7 @@
             "products": [
               {
                 "label": "首推方向",
-                "title": "小微经营信用贷",
+                "title": "信用经营贷",
                 "score": "92",
                 "reason": "经营流水稳定、本行结算关系良好、当前无本行经营贷款，适合优先评估信用方式。",
                 "condition": "待补充近6个月完整流水、征信授权及现有负债信息。"
@@ -359,7 +412,7 @@
               },
               {
                 "title": "产品建议",
-                "content": "首推小微经营信用贷，备选房产抵押经营贷；额度、利率和期限以正式审批为准。"
+                "content": "首推信用经营贷，备选房产抵押经营贷；额度、利率和期限以正式审批为准。"
               },
               {
                 "title": "待补材料",

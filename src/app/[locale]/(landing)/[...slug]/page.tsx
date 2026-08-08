@@ -1,9 +1,11 @@
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
+import { redirect } from '@/core/i18n/navigation';
 import { getThemePage } from '@/core/theme';
 import { envConfigs } from '@/config';
 import { getLocalPage } from '@/shared/models/post';
+import { getSignUser } from '@/shared/models/user';
 
 export const revalidate = 3600;
 
@@ -96,8 +98,10 @@ export async function generateMetadata({
 
 export default async function DynamicPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string; slug: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
@@ -108,6 +112,32 @@ export default async function DynamicPage({
   // static page slug
   const staticPageSlug =
     typeof slug === 'string' ? slug : (slug as string[]).join('/') || '';
+
+  // The retail workspace contains private customer and business data. A cookie
+  // presence check in the proxy is only an early redirect; validate the real
+  // session here so expired or forged cookies can never render the workspace.
+  if (
+    staticPageSlug === 'workbench' ||
+    staticPageSlug.startsWith('workbench/')
+  ) {
+    const user = await getSignUser();
+    if (!user) {
+      const query = new URLSearchParams();
+      const requestedSearchParams = await searchParams;
+      for (const [key, value] of Object.entries(requestedSearchParams)) {
+        if (Array.isArray(value)) {
+          value.forEach((item) => query.append(key, item));
+        } else if (value !== undefined) {
+          query.set(key, value);
+        }
+      }
+      const callbackPath = `/${staticPageSlug}${query.size ? `?${query}` : ''}`;
+      redirect({
+        href: `/sign-in?callbackUrl=${encodeURIComponent(callbackPath)}`,
+        locale,
+      });
+    }
+  }
 
   // filter invalid slug
   if (staticPageSlug.includes('.')) {
