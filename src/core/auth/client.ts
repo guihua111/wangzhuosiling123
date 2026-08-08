@@ -3,9 +3,19 @@ import { createAuthClient } from 'better-auth/react';
 
 import { envConfigs } from '@/config';
 
+function getAuthBaseUrl() {
+  // Authentication is same-origin in the browser. Using the active origin
+  // avoids CORS/network failures when local ports, preview URLs, or custom
+  // domains differ from the URL present during the build.
+  if (typeof window !== 'undefined') {
+    return window.location.origin;
+  }
+  return envConfigs.auth_url;
+}
+
 // create default auth client, without plugins
 export const authClient = createAuthClient({
-  baseURL: envConfigs.auth_url,
+  baseURL: getAuthBaseUrl(),
   fetchOptions: {
     // Auth mutations must not be retried automatically. Better Auth already
     // handles session state and server-side rate limiting.
@@ -19,7 +29,7 @@ export const { useSession, signIn, signUp, signOut } = authClient;
 // get auth client with plugins
 export function getAuthClient(configs: Record<string, string>) {
   const authClient = createAuthClient({
-    baseURL: envConfigs.auth_url,
+    baseURL: getAuthBaseUrl(),
     plugins: getAuthPlugins(configs),
     fetchOptions: {
       retry: 0,
