@@ -23,6 +23,20 @@ import { grantRoleForNewUser } from '@/shared/services/rbac';
 // and to add a server-side throttle beyond any client-side cooldown.
 const recentVerificationEmailSentAt = new Map<string, number>();
 const VERIFICATION_EMAIL_MIN_INTERVAL_MS = 60_000;
+const FINREACH_PRODUCTION_ORIGINS = [
+  'https://www.finreach.site',
+  'https://finreach.site',
+];
+
+const trustedOrigins = Array.from(
+  new Set(
+    [
+      envConfigs.app_url,
+      envConfigs.auth_url,
+      ...FINREACH_PRODUCTION_ORIGINS,
+    ].filter(Boolean)
+  )
+);
 
 // Static auth options - NO database connection
 // This ensures zero database calls during build time
@@ -30,7 +44,9 @@ const authOptions = {
   appName: envConfigs.app_name,
   baseURL: envConfigs.auth_url,
   secret: envConfigs.auth_secret,
-  trustedOrigins: envConfigs.app_url ? [envConfigs.app_url] : [],
+  // Better Auth performs strict Origin validation. Keep both production host
+  // names explicit while Vercel permanently redirects the apex to www.
+  trustedOrigins,
   user: {
     // Allow persisting custom columns on user table.
     // Without this, better-auth may ignore extra properties during create/update.
