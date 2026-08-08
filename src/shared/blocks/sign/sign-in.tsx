@@ -5,8 +5,8 @@ import { Loader2 } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { toast } from 'sonner';
 
-import { authClient, signIn } from '@/core/auth/client';
-import { Link, useRouter } from '@/core/i18n/navigation';
+import { signIn } from '@/core/auth/client';
+import { Link } from '@/core/i18n/navigation';
 import { defaultLocale } from '@/config/locale';
 import { Button } from '@/shared/components/ui/button';
 import {
@@ -31,7 +31,6 @@ export function SignIn({
   callbackUrl: string;
   defaultEmail?: string;
 }) {
-  const router = useRouter();
   const locale = useLocale();
   const t = useTranslations('common.sign');
   const [email, setEmail] = useState(defaultEmail || '');
@@ -54,16 +53,6 @@ export function SignIn({
       callbackUrl = `/${locale}${callbackUrl}`;
     }
   }
-
-  const base = locale !== defaultLocale ? `/${locale}` : '';
-  const stripLocalePrefix = (path: string) => {
-    if (!path?.startsWith('/')) return '/';
-    if (locale === defaultLocale) return path;
-    if (path === `/${locale}`) return '/';
-    if (path.startsWith(`/${locale}/`))
-      return path.slice(locale.length + 1) || '/';
-    return path;
-  };
 
   const handleSignIn = async () => {
     if (loading) {
@@ -98,28 +87,6 @@ export function SignIn({
             window.location.assign(callbackUrl || '/');
           },
           onError: (e: any) => {
-            const status = e?.error?.status;
-            if (status === 403) {
-              const normalizedCallbackUrl = stripLocalePrefix(callbackUrl);
-              const verifyPath = `/verify-email?sent=1&email=${encodeURIComponent(
-                email
-              )}&callbackUrl=${encodeURIComponent(normalizedCallbackUrl)}`;
-
-              // IMPORTANT:
-              // better-auth does not URL-encode callbackURL when generating the verification URL.
-              // So callbackURL must not contain its own '&' query params (or they'll get split).
-              // We send users to home/callbackUrl after verification, and keep the verify page only
-              // as the waiting UI.
-              void authClient.sendVerificationEmail({
-                email,
-                callbackURL: `${base}${normalizedCallbackUrl || '/'}`,
-              });
-
-              // i18n router will prefix locale automatically; do NOT include locale here.
-              router.push(verifyPath);
-              return;
-            }
-
             toast.error(e?.error?.message || 'sign in failed');
             setLoading(false);
           },

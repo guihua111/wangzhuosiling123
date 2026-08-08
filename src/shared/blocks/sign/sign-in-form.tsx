@@ -5,8 +5,8 @@ import { Loader2 } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { toast } from 'sonner';
 
-import { authClient, signIn } from '@/core/auth/client';
-import { Link, useRouter } from '@/core/i18n/navigation';
+import { signIn } from '@/core/auth/client';
+import { Link } from '@/core/i18n/navigation';
 import { defaultLocale } from '@/config/locale';
 import { Button } from '@/shared/components/ui/button';
 import { Input } from '@/shared/components/ui/input';
@@ -23,7 +23,6 @@ export function SignInForm({
   className?: string;
 }) {
   const t = useTranslations('common.sign');
-  const router = useRouter();
   const locale = useLocale();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -46,16 +45,6 @@ export function SignInForm({
       callbackUrl = `/${locale}${callbackUrl}`;
     }
   }
-
-  const base = locale !== defaultLocale ? `/${locale}` : '';
-  const stripLocalePrefix = (path: string) => {
-    if (!path?.startsWith('/')) return '/';
-    if (locale === defaultLocale) return path;
-    if (path === `/${locale}`) return '/';
-    if (path.startsWith(`/${locale}/`))
-      return path.slice(locale.length + 1) || '/';
-    return path;
-  };
 
   const handleSignIn = async () => {
     if (loading) {
@@ -90,24 +79,6 @@ export function SignInForm({
             window.location.assign(callbackUrl || '/');
           },
           onError: (e: any) => {
-            const status = e?.error?.status;
-            if (status === 403) {
-              const normalizedCallbackUrl = stripLocalePrefix(callbackUrl);
-              const verifyPath = `/verify-email?sent=1&email=${encodeURIComponent(
-                email
-              )}&callbackUrl=${encodeURIComponent(normalizedCallbackUrl)}`;
-
-              // Send verification email with callback to verify page.
-              void authClient.sendVerificationEmail({
-                email,
-                callbackURL: `${base}${verifyPath}`,
-              });
-
-              // i18n router will prefix locale automatically; do NOT include locale here.
-              router.push(verifyPath);
-              return;
-            }
-
             toast.error(e?.error?.message || 'sign in failed');
             setLoading(false);
           },

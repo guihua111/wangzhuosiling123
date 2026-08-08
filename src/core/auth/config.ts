@@ -73,8 +73,9 @@ const authOptions = {
 
 // get auth options with configs
 export async function getAuthOptions(configs: Record<string, string>) {
-  const emailVerificationEnabled =
-    configs.email_verification_enabled === 'true' && !!configs.resend_api_key;
+  // FinReach uses immediate password authentication. Accounts are signed in
+  // as soon as registration succeeds; email verification is intentionally off.
+  const emailVerificationEnabled = false;
 
   return {
     ...authOptions,

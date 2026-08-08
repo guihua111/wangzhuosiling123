@@ -1,12 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { toast } from 'sonner';
 
-import { authClient, signUp } from '@/core/auth/client';
+import { signUp } from '@/core/auth/client';
 import { Link } from '@/core/i18n/navigation';
 import { defaultLocale } from '@/config/locale';
 import { Button } from '@/shared/components/ui/button';
@@ -30,7 +29,6 @@ export function SignUp({
   configs: Record<string, string>;
   callbackUrl: string;
 }) {
-  const router = useRouter();
   const t = useTranslations('common.sign');
   const locale = useLocale();
 
@@ -44,8 +42,6 @@ export function SignUp({
   const isEmailAuthEnabled =
     configs.email_auth_enabled !== 'false' ||
     (!isGoogleAuthEnabled && !isGithubAuthEnabled); // no social providers enabled, auto enable email auth
-  const emailVerificationEnabled = configs.email_verification_enabled === 'true';
-
   if (callbackUrl) {
     if (
       locale !== defaultLocale &&
@@ -55,16 +51,6 @@ export function SignUp({
       callbackUrl = `/${locale}${callbackUrl}`;
     }
   }
-
-  const base = locale !== defaultLocale ? `/${locale}` : '';
-  const stripLocalePrefix = (path: string) => {
-    if (!path?.startsWith('/')) return '/';
-    if (locale === defaultLocale) return path;
-    if (path === `/${locale}`) return '/';
-    if (path.startsWith(`/${locale}/`))
-      return path.slice(locale.length + 1) || '/';
-    return path;
-  };
 
   const reportAffiliate = ({
     userEmail,
@@ -119,29 +105,8 @@ export function SignUp({
             // report affiliate
             reportAffiliate({ userEmail: email });
 
-            const emailVerificationEnabled =
-              configs.email_verification_enabled === 'true';
-
-            if (emailVerificationEnabled) {
-              const normalizedCallbackUrl = stripLocalePrefix(callbackUrl);
-              const verifyPath = `/verify-email?sent=1&email=${encodeURIComponent(
-                email
-              )}&callbackUrl=${encodeURIComponent(normalizedCallbackUrl)}`;
-
-            // IMPORTANT: callbackURL must not contain its own '&' query params.
-            // We redirect to home/callbackUrl after verification; verify page is just the waiting UI.
-              void authClient.sendVerificationEmail({
-                email,
-              callbackURL: `${base}${normalizedCallbackUrl || '/'}`,
-              });
-
-              // next/navigation router expects fully qualified path (including locale when non-default)
-              router.push(`${base}${verifyPath}`);
-              return;
-            }
-
-            // Sign-up creates a session when verification is disabled. Reload
-            // through the destination so the whole UI sees that session.
+            // Registration creates a session immediately. Reload through the
+            // destination so every server/client component sees the new cookie.
             window.location.assign(callbackUrl || '/');
           },
           onError: (e: any) => {
@@ -202,11 +167,6 @@ export function SignUp({
                   }}
                   value={email}
                 />
-                {emailVerificationEnabled && (
-                  <p className="text-amber-600 text-xs">
-                    {t('email_verification_hint')}
-                  </p>
-                )}
               </div>
 
               <div className="grid gap-2">

@@ -1,28 +1,4 @@
-import { getTranslations } from 'next-intl/server';
-
 import { redirect } from '@/core/i18n/navigation';
-import { envConfigs } from '@/config';
-import { defaultLocale } from '@/config/locale';
-import { VerifyEmailPage } from '@/shared/blocks/sign/verify-email';
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  const t = await getTranslations('common');
-
-  return {
-    title: `${t('sign.verify_email_page_title')} - ${t('metadata.title')}`,
-    alternates: {
-      canonical:
-        locale !== defaultLocale
-          ? `${envConfigs.app_url}/${locale}/verify-email`
-          : `${envConfigs.app_url}/verify-email`,
-    },
-  };
-}
 
 export default async function VerifyEmailRoute({
   searchParams,
@@ -31,18 +7,16 @@ export default async function VerifyEmailRoute({
   searchParams: Promise<{
     email?: string;
     callbackUrl?: string;
-    sent?: string;
   }>;
   params: Promise<{ locale: string }>;
 }) {
-  const { email, callbackUrl, sent } = await searchParams;
+  const { email, callbackUrl } = await searchParams;
   const { locale } = await params;
-  // If user lands here without required context (e.g. direct navigation),
-  // send them to sign-in instead of showing an incomplete verify page.
-  if (!email && !callbackUrl) {
-    redirect({ href: '/sign-in', locale });
-  }
-  return (
-    <VerifyEmailPage email={email} callbackUrl={callbackUrl} sent={sent} />
-  );
+  const query = new URLSearchParams({ callbackUrl: callbackUrl || '/' });
+  if (email) query.set('email', email);
+
+  // Email verification is no longer part of the FinReach sign-up flow. Keep
+  // old bookmarks and already-open tabs useful by sending them to password
+  // sign-in instead of rendering the retired verification screen.
+  redirect({ href: `/sign-in?${query}`, locale });
 }
