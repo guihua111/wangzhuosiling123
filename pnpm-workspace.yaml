@@ -1,6 +1,9 @@
 packages:
   - .
 
+ignoredBuiltDependencies:
+  - core-js
+
 overrides:
   '@types/react': 19.2.2
   '@types/react-dom': 19.2.2

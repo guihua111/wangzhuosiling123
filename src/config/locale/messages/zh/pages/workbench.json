@@ -425,7 +425,17 @@
             ],
             "action_title": "生成本次展业成果",
             "action_description": "保存结构化摘要，供后续沟通、材料收集和跟进执行使用。",
-            "action_button": "生成并保存总结"
+            "action_button": "生成、保存并导出 PDF",
+            "exporting": "正在生成 PDF...",
+            "export_success": "总结已保存，PDF 已开始下载。",
+            "export_failed": "PDF 导出失败，请稍后重试。",
+            "pdf_brand": "零售信贷展业助手",
+            "pdf_title": "客户展业总结",
+            "pdf_subtitle": "汇总客户需求、画像、产品建议、材料与下一步行动，供后续展业复核使用。",
+            "pdf_customer": "当前客户",
+            "pdf_customer_number": "客户编号",
+            "pdf_generated_at": "生成时间",
+            "pdf_disclaimer": "本总结用于展业辅助，所有产品建议、额度、利率、期限及审批结果以正式授信审批为准。"
           }
         }
       }

@@ -440,7 +440,17 @@
             ],
             "action_title": "Create this business summary",
             "action_description": "Save the structured result for outreach, document collection, and follow-up execution.",
-            "action_button": "Create and save summary"
+            "action_button": "Create, save and export PDF",
+            "exporting": "Generating PDF...",
+            "export_success": "Summary saved and PDF download started.",
+            "export_failed": "PDF export failed. Please try again.",
+            "pdf_brand": "Retail Lending Assistant",
+            "pdf_title": "Customer Business Summary",
+            "pdf_subtitle": "A review-ready summary of customer needs, profile, product direction, materials and next actions.",
+            "pdf_customer": "Customer",
+            "pdf_customer_number": "Customer number",
+            "pdf_generated_at": "Generated at",
+            "pdf_disclaimer": "This summary supports business development only. Product terms and decisions remain subject to formal credit approval."
           }
         }
       }

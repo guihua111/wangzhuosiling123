@@ -274,6 +274,7 @@ export function RetailWorkbench({ section }: { section: Section }) {
   const [summarySections, setSummarySections] = useState<any[]>(
     copy.summary.sections as any[]
   );
+  const [isExportingSummary, setIsExportingSummary] = useState(false);
   const [businessCanEdit, setBusinessCanEdit] = useState(true);
   const businessVersionRef = useRef(0);
   const documentBaselineRef = useRef<BusinessField[]>(
@@ -997,16 +998,160 @@ export function RetailWorkbench({ section }: { section: Section }) {
     }
   };
 
+  const exportSummaryPdf = async (snapshot: BusinessSnapshot) => {
+    const [{ default: html2canvas }, { jsPDF }] = await Promise.all([
+      import('html2canvas'),
+      import('jspdf'),
+    ]);
+    const customerNumber = getCustomerNumber(
+      selectedCustomerId,
+      selectedCustomerName
+    );
+    const generatedAt = new Intl.DateTimeFormat(undefined, {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+    }).format(new Date());
+    const escapeHtml = (value: unknown) =>
+      String(value ?? '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    const metrics = snapshot.summary.metrics
+      .map(
+        (metric: any) => `
+          <div class="metric-card">
+            <strong>${escapeHtml(metric.value)}</strong>
+            <span>${escapeHtml(metric.label)}</span>
+          </div>`
+      )
+      .join('');
+    const sections = snapshot.summary.sections
+      .map(
+        (item: any, index: number) => `
+          <section class="summary-card">
+            <div class="section-index">${String(index + 1).padStart(2, '0')}</div>
+            <div>
+              <h2>${escapeHtml(item.title)}</h2>
+              <p>${escapeHtml(item.content)}</p>
+            </div>
+          </section>`
+      )
+      .join('');
+    const renderRoot = document.createElement('div');
+    renderRoot.setAttribute('aria-hidden', 'true');
+    renderRoot.style.cssText =
+      'position:fixed;left:-10000px;top:0;width:794px;background:#fff;color:#172033;z-index:-1;';
+    renderRoot.innerHTML = `
+      <style>
+        .pdf-page { width: 794px; min-height: 1040px; box-sizing: border-box; padding: 56px; background: #fff; font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif; }
+        .brand { color: #5b5ce2; font-size: 14px; font-weight: 700; letter-spacing: 2px; }
+        h1 { margin: 12px 0 8px; color: #111827; font-size: 32px; line-height: 1.25; }
+        .subtitle { margin: 0; color: #667085; font-size: 14px; }
+        .customer { display: flex; justify-content: space-between; gap: 24px; margin-top: 28px; padding: 18px 20px; border: 1px solid #dfe3f8; border-radius: 14px; background: #f7f7ff; }
+        .customer-label { color: #667085; font-size: 12px; }
+        .customer-value { margin-top: 5px; color: #111827; font-size: 17px; font-weight: 700; }
+        .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 22px; }
+        .metric-card { padding: 16px; border: 1px solid #e4e7ec; border-radius: 12px; background: #fafafa; }
+        .metric-card strong { display: block; color: #5b5ce2; font-size: 24px; }
+        .metric-card span { display: block; margin-top: 6px; color: #667085; font-size: 12px; }
+        .summary-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; }
+        .summary-card { display: flex; gap: 12px; min-height: 122px; box-sizing: border-box; padding: 18px; border: 1px solid #e4e7ec; border-radius: 12px; }
+        .section-index { flex: 0 0 auto; color: #5b5ce2; font-size: 12px; font-weight: 700; }
+        .summary-card h2 { margin: 0; color: #111827; font-size: 17px; }
+        .summary-card p { margin: 9px 0 0; color: #475467; font-size: 13px; line-height: 1.75; white-space: pre-wrap; }
+        .notice { margin-top: 24px; padding: 14px 16px; border-radius: 10px; background: #f2f4f7; color: #667085; font-size: 11px; line-height: 1.6; }
+        .footer { display: flex; justify-content: space-between; margin-top: 24px; padding-top: 14px; border-top: 1px solid #e4e7ec; color: #98a2b3; font-size: 10px; }
+      </style>
+      <main class="pdf-page">
+        <div class="brand">FINREACH · ${escapeHtml(copy.summary.pdf_brand || '零售信贷展业助手')}</div>
+        <h1>${escapeHtml(copy.summary.pdf_title || '客户展业总结')}</h1>
+        <p class="subtitle">${escapeHtml(copy.summary.pdf_subtitle || copy.summary.action_description)}</p>
+        <div class="customer">
+          <div>
+            <div class="customer-label">${escapeHtml(copy.summary.pdf_customer || '当前客户')}</div>
+            <div class="customer-value">${escapeHtml(selectedCustomerName)}</div>
+          </div>
+          <div>
+            <div class="customer-label">${escapeHtml(copy.summary.pdf_customer_number || '客户编号')}</div>
+            <div class="customer-value">${escapeHtml(customerNumber)}</div>
+          </div>
+        </div>
+        <div class="metrics">${metrics}</div>
+        <div class="summary-list">${sections}</div>
+        <div class="notice">${escapeHtml(copy.summary.pdf_disclaimer || '本总结用于展业辅助，所有产品建议、额度、利率、期限及审批结果以正式授信审批为准。')}</div>
+        <div class="footer">
+          <span>www.finreach.site</span>
+          <span>${escapeHtml(copy.summary.pdf_generated_at || '生成时间')}：${escapeHtml(generatedAt)}</span>
+        </div>
+      </main>`;
+    document.body.appendChild(renderRoot);
+
+    try {
+      const canvas = await html2canvas(renderRoot.querySelector('.pdf-page')!, {
+        scale: 2,
+        backgroundColor: '#ffffff',
+        useCORS: true,
+        logging: false,
+      });
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4',
+      });
+      const margin = 10;
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const imageWidth = pageWidth - margin * 2;
+      const imageHeight = (canvas.height * imageWidth) / canvas.width;
+      const printableHeight = pageHeight - margin * 2;
+      const imageData = canvas.toDataURL('image/png');
+      let offset = 0;
+
+      while (offset < imageHeight) {
+        if (offset > 0) pdf.addPage();
+        pdf.addImage(
+          imageData,
+          'PNG',
+          margin,
+          margin - offset,
+          imageWidth,
+          imageHeight,
+          undefined,
+          'FAST'
+        );
+        offset += printableHeight;
+      }
+
+      const fileDate = new Date().toISOString().slice(0, 10);
+      pdf.save(`FinReach-${customerNumber}-${fileDate}.pdf`);
+    } finally {
+      renderRoot.remove();
+    }
+  };
+
   const generateSummary = async () => {
+    setIsExportingSummary(true);
     try {
       const snapshot = await updateBusiness('summary', {
         regenerate: true,
       });
       setSummaryMetrics(snapshot.summary.metrics);
       setSummarySections(snapshot.summary.sections);
-      setSavedMessage(copy.shared.saved);
+      await exportSummaryPdf(snapshot);
+      setSavedMessage(copy.summary.export_success || copy.shared.saved);
     } catch (error) {
-      setSavedMessage(error instanceof Error ? error.message : '保存失败');
+      setSavedMessage(
+        error instanceof Error
+          ? error.message
+          : copy.summary.export_failed || 'PDF 导出失败'
+      );
+    } finally {
+      setIsExportingSummary(false);
     }
   };
 
@@ -1777,11 +1922,19 @@ export function RetailWorkbench({ section }: { section: Section }) {
           </p>
         </div>
         <Button
-          disabled={!selectedCustomerId || !businessCanEdit}
+          disabled={
+            !selectedCustomerId || !businessCanEdit || isExportingSummary
+          }
           onClick={() => void generateSummary()}
         >
-          <Sparkles className="size-4" />
-          {copy.summary.action_button}
+          {isExportingSummary ? (
+            <Sparkles className="size-4 animate-pulse" />
+          ) : (
+            <Download className="size-4" />
+          )}
+          {isExportingSummary
+            ? copy.summary.exporting || copy.summary.action_button
+            : copy.summary.action_button}
         </Button>
       </div>
     </div>
